@@ -1,0 +1,18 @@
+* {
+    bg-col:       #1e1e2eff; 
+    bg-col-light: #31324466;
+    border-col:  	#181825bb;
+    selected-col: #31324422;
+    green:        #a6e3a1ff;
+    fg-col:       #bac2deff;
+    fg-col2:      #a6e3a1ff;
+    grey:  	      #6c7086ff;
+
+    width: 18%;
+    height: 97.33%;
+}
+
+window{
+  x-offset: -20;
+  y-offset: 20;
+}
