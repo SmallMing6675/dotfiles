@@ -9,7 +9,7 @@ configuration{
     terminal: "alacritty";
 
     drun-display-format: "{icon} {name}";
-    location: 3;
+    location: 1;
     disable-history: false;
     hide-scrollbar: true;
 
@@ -30,8 +30,10 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    background-color: #1e1e2edd;
-    border-radius: 10px;
+    background-color: #1e1e2ebb;
+    border: 2px;
+    border-radius: 15px;
+
 }
 
 * {
@@ -45,27 +47,20 @@ mainbox {
 inputbar {
     children: [entry];
 
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 0px;
 }
 
 prompt {
-    padding: 20px;
     text-color: @green;
-    content: "->";
     border-radius: 10px;
-    margin: 12px 0px 0px 8px;
-}
-
-textbox-prompt-colon {
-    expand: false;
-    str: "-";
+    margin: 12px 0px 0px 20px;
 }
 
 entry {
     padding: 10px;
     margin: 20px 0px 0px 10px;
-    text-color: @fg-col;
+    text-color: @text;
 }
 
 listview {
@@ -74,20 +69,17 @@ listview {
 
 element {
     padding: 3px;
-    text-color: @fg-col;
+    text-color: @text;
 }
 
-element-icon {
-    size: 30px;
-}
 
 element selected {
-    text-color: @green;
+    background-color: @green;
+    text-color: @mantle;
     border-radius: 10px;
 }
 
 mode-switcher {
-    background-color: @bg-col-light;
     spacing: 0;
     border-radius: 10px;
 }
@@ -95,8 +87,8 @@ mode-switcher {
 button {
     padding: 10px;
     margin: 5px;
-    text-color: @grey;
-    font: "JetBrainsMono Nerd Font Mono Medium 20";
+    text-color: @subtext1;
+    font: "JetBrainsMono Nerd Font Mono Medium 24";
     vertical-align: 0.5;
     horizontal-align: 0.5;
     border-radius: 10px;
