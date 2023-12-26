@@ -4,8 +4,8 @@ configuration{
     modi: "run,drun,window";
     font: "JetBrainsMono Nerd Font Mono Medium 15";
   
-    show-icons: true;
-    icon-theme: "Fluent-dark";
+    show-icons: false;
+    icon-theme: "We10X-special-dark";
     terminal: "alacritty";
 
     drun-display-format: "{icon} {name}";
@@ -50,11 +50,11 @@ inputbar {
 }
 
 prompt {
-    padding: 12px;
+    padding: 20px;
     text-color: @green;
     content: "->";
     border-radius: 10px;
-    margin: 12px 0px 0px 12px;
+    margin: 12px 0px 0px 8px;
 }
 
 textbox-prompt-colon {
@@ -63,14 +63,13 @@ textbox-prompt-colon {
 }
 
 entry {
-    padding: 6px;
+    padding: 10px;
     margin: 20px 0px 0px 10px;
     text-color: @fg-col;
 }
 
 listview {
-    padding: 0px;
-    margin: 0px 0px 0px 10px;
+
 }
 
 element {
