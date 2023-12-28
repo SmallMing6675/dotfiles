@@ -20,11 +20,13 @@ plugins=(
 )
 
 #autocomplete
+eval "$(~/.local/bin/zoxide init zsh)"
 autoload -U compinit; compinit
 zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=($(( LINES / 3 )))' format 
 zstyle ':completion:*:*:*:*:descriptions' format '%F{green}➜ %d %f'
 
 PATH=$PATH:/usr/lib/ruby/gems/3.0.0/gems
+PATH=$PATH:~/.local/bin/
 
 # Sources:
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
@@ -52,7 +54,9 @@ alias yadm="yadm --yadm-repo ~/dotfiles"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 
+
 export EDITOR="nvim"
 GTK_IM_MODULE=fcitx
 QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
+

@@ -4,6 +4,14 @@ local default_plugins = {
 
   "nvim-lua/plenary.nvim",
 
+  { 'codota/tabnine-nvim', build = "./dl_binaries.sh" },
+
+  {
+     'tzachar/cmp-tabnine',
+     build = './install.sh',
+     dependencies = 'hrsh7th/nvim-cmp',
+  },
+
   {
     "NvChad/base46",
     branch = "v2.0",
@@ -267,6 +275,8 @@ local default_plugins = {
       require("which-key").setup(opts)
     end,
   },
+
+
 }
 
 local config = require("core.utils").load_config()
@@ -276,3 +286,4 @@ if #config.plugins > 0 then
 end
 
 require("lazy").setup(default_plugins, config.lazy_nvim)
+
