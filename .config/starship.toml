@@ -64,7 +64,7 @@ show_always = true
 [git_branch]
 symbol = " "
 format = "[$symbol$branch(:$remote_branch)]($style) "
-style = "red"
+style = "color_blue"
 # format = "[git:](bold lavender)[\\(](bold lavender)[$branch(:$remote_branch)]($style)[\\)](bold lavender) "
 
 [directory]
@@ -72,7 +72,7 @@ format = "[$read_only]($read_only_style)[$path]($style) "
 read_only = " "
 truncation_length = 3
 home_symbol = "~"
-style = "color_fg0"
+style = "color_yellow"
 
 
 
