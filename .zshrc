@@ -10,10 +10,8 @@ zstyle ':completion:*:*:*:*:descriptions' format '%F{green}➜ %d %f'
 PATH=$PATH:~/.local/bin/:~/.cargo/bin/
 
 # Sources:
-source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh 
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 source <(/usr/bin/starship init zsh --print-full-init)
 
 #aliases
@@ -26,7 +24,6 @@ alias obsidian="~/AppImage/Obsidian-1.4.16.AppImage"
 alias vim="lvim"
 alias cat="bat"
 alias sudo="doas"
-alias yadm="yadm --yadm-repo ~/dotfiles"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 export EDITOR="lvim"
@@ -35,7 +32,4 @@ GTK_IM_MODULE=fcitx
 QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
 
-if command -v wal > /dev/null 2>&1 && [ "$TERM" = "alacritty" ]; then
-    wal -Rqe
-fi
-
+cd ~
