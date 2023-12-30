@@ -7,7 +7,7 @@ autoload -U compinit; compinit
 zstyle -e ':autocomplete:list-choices:*' list-lines 'reply=($(( LINES / 3 )))' format 
 zstyle ':completion:*:*:*:*:descriptions' format '%F{green}➜ %d %f'
 
-PATH=$PATH:~/.local/bin/
+PATH=$PATH:~/.local/bin/:~/.cargo/bin/
 
 # Sources:
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
@@ -34,4 +34,8 @@ export EDITOR="lvim"
 GTK_IM_MODULE=fcitx
 QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
+
+if command -v wal > /dev/null 2>&1 && [ "$TERM" = "alacritty" ]; then
+    wal -Rqe
+fi
 

@@ -1,10 +1,7 @@
-vim.wo.relativenumber = true
-lvim.colorscheme = "catppuccin-mocha"
+
 
 lvim.plugins = {
-  { "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000 },
+  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...}
 }
 
 -- Status line
@@ -17,4 +14,8 @@ lvim.builtin.lualine.sections.lualine_y = {
 }
 lvim.builtin.lualine.style = "default"
 lvim.builtin.lualine.sections.lualine_x = { "diff" }
+lvim.colorscheme = "gruvbox"
+
+vim.wo.relativenumber = true
+
 
