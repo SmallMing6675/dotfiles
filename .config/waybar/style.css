@@ -2,7 +2,7 @@
 /* --- GENERAL --- */
 * {
   font-family: JetBrainsMono Nerd Font;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: Bold;
   min-height: 0;
 }
@@ -48,7 +48,7 @@
 #workspaces button {
   color: @yellow-dim;
   background-color: transparent;
-  padding: 0px 1px;
+  padding: 0px 0px;
   margin: 0.3rem 0;
   border: transparent;
   transition: color 0.2s, background-color 0.2s;
