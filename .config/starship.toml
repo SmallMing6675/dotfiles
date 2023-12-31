@@ -70,7 +70,7 @@ style = "color_blue"
 [directory]
 format = "[$read_only]($read_only_style)[$path]($style) "
 read_only = " "
-truncation_length = 3
+truncation_length = 4
 home_symbol = "~"
 style = "color_yellow"
 

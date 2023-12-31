@@ -1,0 +1,32 @@
+import = ["~/.config/alacritty/themes/themes/gruvbox_dark.toml"]
+shell = "zsh"
+
+[font]
+size = 16
+
+  [font.normal]
+  family = "JetBrainsMono Nerd Font"
+  style = "Medium"
+
+  [font.bold]
+  family = "JetBrainsMono Nerd Font"
+  style = "Bold"
+
+  [font.italic]
+  family = "JetBrainsMono Nerd Font"
+  style = "Italic"
+
+  [font.bold_italic]
+  family = "JetBrainsMono Nerd Font"
+  style = "Bold Italic"
+
+
+
+[window]
+padding = {x = 10, y = 10}
+dynamic_padding = true
+
+[cursor]
+style = {shape = "Underline", blinking = "On"}
+unfocused_hollow = false
+

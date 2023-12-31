@@ -1,7 +1,15 @@
 
+lvim.colorscheme = "gruvbox-material"
 
 lvim.plugins = {
-  { "luisiacc/gruvbox-baby",bransh = 'main'}
+  { "sainnhe/gruvbox-material",bransh = 'main'},
+   {
+    "sourcegraph/sg.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", --[[ "nvim-telescope/telescope.nvim ]] },
+        -- If you have a recent version of lazy.nvim, you don't need to add this!
+    build = "nvim -l build/init.lua",
+
+  },
 }
 
 -- Status line
@@ -14,6 +22,8 @@ lvim.builtin.lualine.sections.lualine_y = {
 }
 lvim.builtin.lualine.style = "default"
 lvim.builtin.lualine.sections.lualine_x = { "diff" }
-lvim.colorscheme = "gruvbox-baby"
-lvim.builtin.lualine.options.theme = "gruvbox-baby"
+lvim.builtin.lualine.options.theme = "gruvbox-material"
+
 vim.wo.relativenumber = true
+
+require("sg").setup {}

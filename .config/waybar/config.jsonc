@@ -1,0 +1,167 @@
+// -*- mode: jsonc; -*-
+{
+    // --- GENERAL ---
+    "layer": "top",
+    "position": "top",
+    "margin-left": 24,
+    "margin-right": 24,
+    "margin-top": 24,
+
+    // --- LEFT MODULES ---
+    "modules-left": ["custom/menu","hyprland/workspaces"],
+
+    "hyprland/window": { 
+        "format": "{}",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+
+    },
+
+    "custom/menu": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "~/.config/hypr/scripts/launcher" 
+    },
+
+    "hyprland/workspaces": {
+         "sort-by-name": true,
+        "format": "{icon}",
+        "show-special": true,
+        "persistent-workspaces": {"*": 10 },
+        "format-icons": {
+          "active": "", 
+          "empty": "",
+          "default": ""
+        }
+     },
+
+
+    // --- CENTER MODULES ---
+    "modules-center": ["clock"],
+
+    "clock": {
+        "interval": 1,
+        "format": " {:%H:%M:%S %d %b}",
+        },
+
+
+    // --- RIGHT MODULES ---
+    "modules-right": ["network", "battery", "pulseaudio","cpu", "memory", "custom/lock", "custom/power"],
+
+    "network": {
+        "format-wifi": " ",
+        "tooltip-format-wifi": "{ifname}: {ipaddr}/{cidr}\n{essid} on {frequency}GHz",
+        "format-ethernet": "{ipaddr} ",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "on-click": "nm-connection-editor"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "pulseaudio": { // TODO: replace with wireplumber
+        "format":                 "{volume}%",
+        "format-bluetooth":       "{volume}% 󰂯",
+        "format-bluetooth-muted": " {icon} 󰂯",
+        "format-muted":           " {format_source}",
+        "format-source":          "{volume}%",
+        "format-icons": {
+          "mute": "",
+          "default": ["", "", "", ""]
+        },
+        "max-length": 25,
+        "tooltip": false,
+        "onclick": "pamixer -t",
+
+    },
+    // --- CENTER MODULES ---
+    
+
+    "cpu": {
+        "interval": 10,
+        "format": "{usage}%  ",
+        "on-click": "htop"
+    },
+
+    "memory": {
+        "interval": 10,
+        "format": "{}%  ",
+        "on-click": "htop"
+    },
+
+    "temperature": {
+        "interval": 30,
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C ",
+        "on-click": "htop"
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+
+    "custom/updates": {
+        "interval": 3600, // every hour
+        "exec": "~/.config/waybar/scripts/get_updates.sh",
+        "return-type": "json",
+        "exec-if": "exit 0",
+        "exec-on-event": false,
+        "on-click": "terminator sh -c ~/.config/waybar/scripts/update.sh",
+        "signal": 8
+    },
+
+    "custom/dunst": {
+        "exec": "~/.config/waybar/scripts/dunst.sh",
+        "return-type": "json",
+        "on-click": "dunstctl set-paused toggle"
+    },
+
+    // ---
+
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-icons": ["󰂎", "󰁻", "󰁼", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+    "bluetooth": {
+      "format": "",
+      "onclick": "blueberry",
+      "format-disabled": "", // an empty format will hide the module
+      "format-connected": "",
+      "tooltip-format": "{controller_alias}\\t{controller_address}",
+      "tooltip-format-connected": "{controller_alias}\\t{controller_address}\\n\\n{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\\t{device_address}"
+    },
+    // ---
+
+    "custom/lock": {
+        "tooltip": false,
+        "on-click": "swaylock",
+        "format": ""
+    },
+
+    "custom/power": {
+        "tooltip": false,
+        "on-click": "logout",
+        "format": "⏻"
+    }
+}

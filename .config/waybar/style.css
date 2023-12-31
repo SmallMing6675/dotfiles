@@ -1,0 +1,158 @@
+@import "gruvbox.css";
+/* --- GENERAL --- */
+* {
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 18px;
+  font-weight: Bold;
+  min-height: 0;
+}
+
+#waybar {
+  border-radius: 12px;
+  border: 0px solid #3c3836;
+  background: @bg;
+  opacity: 0.95;
+}
+
+#window,
+#workspaces,
+#clock,
+#network,
+#idle_inhibitor,
+#pulseaudio,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#battery,
+#custom-updates,
+#custom-dunst,
+#bluetooth,
+#custom-menu,
+#custom-lock,
+#custom-power {
+  padding: 0.8rem 0.8rem;
+}
+
+/* --- LEFT MODULES --- */
+
+#custom-menu{
+  color: @yellow;
+  padding-left: 1rem;
+
+}
+#workspaces {
+   padding:  0rem 0.5rem;
+}
+
+#workspaces button {
+  color: @yellow-dim;
+  background-color: transparent;
+  padding: 0px 1px;
+  margin: 0.3rem 0;
+  border: transparent;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+#workspaces button.empty {
+  color: @bg2;
+}
+
+#workspaces button.special {
+  color: @yellow-dim;
+}
+
+#workspaces button.active {
+  color: @yellow;
+}
+
+#workspaces button:hover {
+  color: @yellow-dim;
+}
+
+#window {   
+  color: @fg1;
+}
+
+/* --- CENTER MODULES --- */
+
+#clock {
+  color: @yellow;
+}
+
+/* --- RIGHT MODULES --- */
+
+#network {
+  color: @green;
+  padding-left: 1.6rem;
+  /* margin-left: 1rem; */
+}
+
+#idle_inhibitor.deactivated {
+  color: @red;
+}
+
+#idle_inhibitor.activated {
+  color: @green;
+}
+
+#pulseaudio {
+  color: @purple;
+}
+
+#cpu {
+  color: @yellow;
+}
+
+#memory {
+  color: @orange-dim;
+}
+
+#temperature {
+  color: @red;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#battery {
+  color: @green;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
+#custom-updates {
+  color: @red;
+}
+
+#custom-dunst {
+  
+  color: @aqua;
+}
+
+#bluetooth {
+  color: @aqua;
+}
+/*---*/
+
+#tray {
+  background-color: @bg;
+  
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  /* margin-left: 1rem; */
+}
+
+/* --- */
+
+#custom-power {
+  padding-right: 1.4rem;
+  color: @red;
+}
