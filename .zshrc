@@ -17,19 +17,18 @@ source <(/usr/bin/starship init zsh --print-full-init)
 #aliases
 alias cls="clear"
 alias ls="eza"
-alias lt="eza --tree --level=3"
+alias lt="eza --tree --level=4"
 alias l="eza -l"
 alias logout="loginctl terminate-session self"
 alias obsidian="~/AppImage/Obsidian-1.4.16.AppImage"
-alias vim="lvim"
+alias vim="nvim"
 alias cat="bat"
 alias sudo="doas"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-export EDITOR="lvim"
+export EDITOR="vim"
 
 GTK_IM_MODULE=fcitx
 QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
 
-cd ~

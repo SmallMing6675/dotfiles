@@ -30,3 +30,4 @@ dynamic_padding = true
 style = {shape = "Underline", blinking = "On"}
 unfocused_hollow = false
 
+
