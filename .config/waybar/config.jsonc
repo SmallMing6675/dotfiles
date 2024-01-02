@@ -20,7 +20,7 @@
     "custom/menu": {
         "format": "",
         "tooltip": false,
-        "on-click": "~/.config/hypr/scripts/launcher" 
+        "on-click": "~/.config/hypr/scripts/dashboard" 
     },
 
     "hyprland/workspaces": {

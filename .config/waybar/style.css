@@ -1,17 +1,18 @@
 @import "gruvbox.css";
+
 /* --- GENERAL --- */
 * {
   font-family: JetBrainsMono Nerd Font;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: Bold;
   min-height: 0;
 }
 
 #waybar {
   border-radius: 12px;
-  border: 0px solid #3c3836;
+  border: 6px solid #1d2021;
   background: @bg;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 #window,
@@ -31,14 +32,14 @@
 #custom-menu,
 #custom-lock,
 #custom-power {
-  padding: 0.8rem 0.8rem;
+  padding: 1rem 1rem;
 }
 
 /* --- LEFT MODULES --- */
 
 #custom-menu{
   color: @yellow;
-  padding-left: 1rem;
+  padding-left: 1.6rem;
 
 }
 #workspaces {
@@ -58,21 +59,14 @@
   color: @bg2;
 }
 
-#workspaces button.special {
-  color: @yellow-dim;
-}
-
 #workspaces button.active {
   color: @yellow;
 }
 
 #workspaces button:hover {
-  color: @yellow-dim;
+  color: @orange;
 }
 
-#window {   
-  color: @fg1;
-}
 
 /* --- CENTER MODULES --- */
 
@@ -153,6 +147,6 @@
 /* --- */
 
 #custom-power {
-  padding-right: 1.4rem;
+  padding-right: 1.6rem;
   color: @red;
 }

@@ -1,7 +1,7 @@
 music_dir = ["/home/user/Music"]
 player_port = 50101
 player_loop_mode = "Random"
-player_volume = 20
+player_volume = 10
 player_speed = 10
 player_gapless = true
 podcast_simultanious_download = 3
