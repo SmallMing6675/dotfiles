@@ -2,17 +2,17 @@
 
 /* --- GENERAL --- */
 * {
-  font-family: JetBrainsMono Nerd Font;
-  font-size: 18px;
-  font-weight: Bold;
-  min-height: 0;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 18px;
+    font-weight: Bold;
+    min-height: 0;
 }
 
 #waybar {
-  border-radius: 12px;
-  border: 6px solid #1d2021;
-  background: @bg;
-  opacity: 0.9;
+    border-radius: 12px;
+    border: 6px solid #1d2021;
+    background: @bg;
+    opacity: 0.9;
 }
 
 #window,
@@ -32,121 +32,123 @@
 #custom-menu,
 #custom-lock,
 #custom-power {
-  padding: 1rem 1rem;
+    padding: 1rem 1rem;
 }
 
 /* --- LEFT MODULES --- */
 
-#custom-menu{
-  color: @yellow;
-  padding-left: 1.6rem;
-
+#custom-menu {
+    color: @yellow;
+    padding-left: 1.6rem;
 }
+
+
 #workspaces {
-   padding:  0rem 0.5rem;
+    padding: 0rem 0.5rem;
 }
 
 #workspaces button {
-  color: @yellow-dim;
-  background-color: transparent;
-  padding: 0px 0px;
-  margin: 0.3rem 0;
-  border: transparent;
-  transition: color 0.2s, background-color 0.2s;
+    color: @yellow-dim;
+    background-color: transparent;
+    padding: 0px 0px;
+    margin: 0.3rem 0;
+    border: transparent;
+    transition: color 0.2s, background-color 0.2s;
 }
 
 #workspaces button.empty {
-  color: @bg2;
+    color: @bg2;
 }
 
 #workspaces button.active {
-  color: @yellow;
+    color: @yellow;
 }
 
 #workspaces button:hover {
-  color: @orange;
+    color: @orange;
 }
 
 
 /* --- CENTER MODULES --- */
 
 #clock {
-  color: @yellow;
+    color: @yellow;
 }
 
 /* --- RIGHT MODULES --- */
 
 #network {
-  color: @green;
-  padding-left: 1.6rem;
-  /* margin-left: 1rem; */
+    color: @green;
+    padding-left: 1.6rem;
+    /* margin-left: 1rem; */
 }
 
 #idle_inhibitor.deactivated {
-  color: @red;
+    color: @red;
 }
 
 #idle_inhibitor.activated {
-  color: @green;
+    color: @green;
 }
 
 #pulseaudio {
-  color: @purple;
+    color: @purple;
 }
 
 #cpu {
-  color: @yellow;
+    color: @yellow;
 }
 
 #memory {
-  color: @orange-dim;
+    color: @orange-dim;
 }
 
 #temperature {
-  color: @red;
+    color: @red;
 }
 
 #backlight {
-  color: @yellow;
+    color: @yellow;
 }
 
 #battery {
-  color: @green;
+    color: @green;
 }
 
 #battery.charging {
-  color: @green;
+    color: @green;
 }
 
 #battery.warning:not(.charging) {
-  color: @red;
+    color: @red;
 }
 
 #custom-updates {
-  color: @red;
+    color: @red;
 }
 
 #custom-dunst {
-  
-  color: @aqua;
+
+    color: @aqua;
 }
 
 #bluetooth {
-  color: @aqua;
+    color: @aqua;
 }
+
 /*---*/
 
 #tray {
-  background-color: @bg;
-  
-  padding-left: 0.8rem;
-  padding-right: 0.8rem;
-  /* margin-left: 1rem; */
+    background-color: @bg;
+
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    /* margin-left: 1rem; */
 }
 
 /* --- */
 
 #custom-power {
-  padding-right: 1.6rem;
-  color: @red;
+    padding-right: 1.6rem;
+    color: @red;
 }

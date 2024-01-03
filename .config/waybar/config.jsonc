@@ -19,7 +19,6 @@
 
     "custom/menu": {
         "format": "",
-        "tooltip": false,
         "on-click": "~/.config/hypr/scripts/dashboard" 
     },
 

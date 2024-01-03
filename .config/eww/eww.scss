@@ -3,88 +3,89 @@
 /** Global *******************************************/
 
 * {
-	all: unset;
-	font-family: JetBrainsMono Nerd Font;
+    all: unset;
+    font-family: JetBrainsMono Nerd Font;
 }
 
 
 /** Background ***************************************/
 .background {
-	background-color: $bg-h;
-	border-radius: 12px;
-	padding: 6px;
+    background-color: $bg-h;
+    border-radius: 12px;
+    padding: 6px;
+    opacity: 0.97;
 }
 
 
 /** Generic window ***********************************/
 .genwin {
-	background-color: $bg;
-	border-radius: 8px;
-	padding: 6px;
+    background-color: $bg;
+    border-radius: 8px;
+    padding: 6px;
 }
 
 
 /* Network ********************************************/
 
 .network {
-	color: $green;
-	font-size: 20px;
+    color: $green;
+    font-size: 20px;
 }
 
 
 /* Bluetooth ******************************************/
 .btn_bluet {
-	font-size: 30px;
-	color: $blue-dim;
+    font-size: 30px;
+    color: $blue-dim;
 }
 
 /* Battery **********************************************/
 .battery {
-	padding-top: 30px;
-	font-size: 20px;
-	color: $green;
+    padding-top: 30px;
+    font-size: 20px;
+    color: $green;
 }
 
 .baticon {
-	font-size: 26px;
+    font-size: 26px;
 }
 
 /* Microphone *****************************************/
 .btn_mic {
-	font-size: 32px;
+    font-size: 32px;
 }
 
 
 /** System Sliders ********************************************/
 .slidersbox {
-	padding: 4px;
+    padding: 4px;
 }
 
 .iconbright,
 .iconvolume,
 .iconmic {
-	color: $yellow;
-	font-size: 24px;
-	font-weight: normal;
+    color: $yellow;
+    font-size: 24px;
+    font-weight: normal;
 }
 
 .bright_bar scale trough,
 .volume_bar scale trough,
 .mic_bar scale trough {
-	all: unset;
-	background-color: $bg-s;
-	border-radius: 12px;
-	min-height: 20px;
-	min-width: 240px;
-	margin-right: 12px;
+    all: unset;
+    background-color: $bg-s;
+    border-radius: 12px;
+    min-height: 20px;
+    min-width: 240px;
+    margin-right: 12px;
 }
 
 .bright_bar scale trough highlight,
 .volume_bar scale trough highlight,
 .mic_bar scale trough highlight {
-	all: unset;
-	border-radius: 16px;
-	background-color: $yellow-dim;
+    all: unset;
+    border-radius: 16px;
+    background-color: $yellow-dim;
 }
 
 
@@ -92,82 +93,82 @@
 
 /** Music ***************************************/
 .album_art {
-	background-size: 180px;
-	min-height: 100px;
-	min-width: 100px;
-	margin: 4px;
-	border-radius: 14px;
+    background-size: 180px;
+    min-height: 100px;
+    min-width: 100px;
+    margin: 4px;
+    border-radius: 14px;
 }
 
 .song {
-	color: $fg;
-	font-size: 18px;
-	font-weight: bold;
-	margin: 10px 0px 0px 0px;
+    color: $fg;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0px 0px 0px;
 }
 
 .artist {
-	color: $fg3;
-	font-size: 16px;
-	font-weight: normal;
-	margin: 0px 0px 15px 0px;
+    color: $fg3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0px 0px 15px 0px;
 }
 
 .btn_prev,
 .btn_play,
 .btn_next {
-	color: $yellow-dim;
+    color: $yellow-dim;
 }
 
 .btn_prev {
-	font-size: 32px;
-	font-weight: normal;
+    font-size: 32px;
+    font-weight: normal;
 }
 
 .btn_play {
-	font-size: 35px;
-	font-weight: bold;
-	margin-left: -12px;
+    font-size: 35px;
+    font-weight: bold;
+    margin-left: -12px;
 }
 
 .btn_next {
-	font-size: 32px;
-	font-weight: normal;
+    font-size: 32px;
+    font-weight: normal;
 }
 
 
 /** Calendar *******************************************/
 
 .cal {
-	padding: 5px 5px 0px 5px;
-	border: transparent;
-	font-size: 18px;
+    padding: 5px 5px 0px 5px;
+    border: transparent;
+    font-size: 18px;
 }
 
 calendar {
-	color: $bg4;
+    color: $bg4;
 }
 
 calendar:selected {
-	color: $fg;
+    color: $fg;
 }
 
 calendar.header {
-	color: $yellow;
-	font-weight: bold;
+    color: $yellow;
+    font-weight: bold;
 }
 
 calendar.button {
-	color: $yellow-dim;
+    color: $yellow-dim;
 }
 
 calendar.highlight {
-	color: $yellow;
-	font-weight: bold;
+    color: $yellow;
+    font-weight: bold;
 }
 
 calendar:indeterminate {
-	color: $bg2;
+    color: $bg2;
 }
 
 
@@ -175,10 +176,10 @@ calendar:indeterminate {
 
 /** Power buttons ***************************************/
 .btn_poweroff {
-	color: $red;
-	font-size: 25px;
-	padding: 8px 0;
-	margin: 0px 4px 0px -5px;
+    color: $red;
+    font-size: 25px;
+    padding: 8px 0;
+    margin: 0px 4px 0px -5px;
 }
 
 

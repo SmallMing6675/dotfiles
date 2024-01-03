@@ -128,5 +128,5 @@
 
 ;; ** Windows *************************************************************************
 
-(defwindow dashboard :stacking "fg" :focusable "false" :monitor 0 :geometry (geometry :anchor "top left" :x 24 :y 24)
+(defwindow dashboard :stacking "fg" :focusable "false" :monitor 0 :geometry (geometry :anchor "bottom left" :x 24 :y 24)
   (dashboard))

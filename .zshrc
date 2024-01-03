@@ -19,13 +19,14 @@ alias l="eza -l"
 alias logout="loginctl terminate-session self"
 alias obsidian="~/AppImage/Obsidian-1.4.16.AppImage"
 alias vim="nvim"
+alias v="nvim"
 alias cat="bat"
 alias sudo="doas"
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias cd="z"
 alias ...="../../"
 alias ....="../../../"
-
+alias prompt="ollama run llama2"
 export EDITOR="nvim"
 
 GTK_IM_MODULE=fcitx
