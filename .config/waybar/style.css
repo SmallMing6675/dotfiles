@@ -1,0 +1,151 @@
+@import "nordic.css";
+
+/* --- GENERAL --- */
+* {
+  font-family: JetBrainsMono Nerd Font;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#waybar {
+  border-radius: 12px;
+  border: 0px;
+  background: @bg;
+}
+
+#window,
+#workspaces,
+#clock,
+#network,
+#idle_inhibitor,
+#pulseaudio,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#battery,
+#custom-updates,
+#custom-dunst,
+#bluetooth,
+#custom-menu,
+#custom-lock,
+#custom-power {
+  padding: 0.7rem 0.7rem;
+}
+
+/* --- LEFT MODULES --- */
+
+#custom-menu {
+  color: @yellow;
+  padding-left: 1.6rem;
+}
+
+#workspaces {
+  padding: 0rem 0.5rem;
+}
+
+#workspaces button {
+  color: @yellow-dim;
+  background-color: transparent;
+  padding: 3px 3px;
+  margin: 0.3rem 0;
+  border: transparent;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+
+#workspaces button.empty {
+  color: @bg2;
+}
+
+#workspaces button.active {
+  color: @yellow;
+}
+
+#workspaces button:hover {
+  color: @orange;
+}
+
+/* --- CENTER MODULES --- */
+
+#clock {
+  color: @yellow;
+}
+
+/* --- RIGHT MODULES --- */
+
+#network {
+  color: @green;
+  padding-left: 1.6rem;
+  /* margin-left: 1rem; */
+}
+
+#idle_inhibitor.deactivated {
+  color: @red;
+}
+
+#idle_inhibitor.activated {
+  color: @green;
+}
+
+#pulseaudio {
+  color: @purple;
+}
+
+#cpu {
+  color: @yellow;
+}
+
+#memory {
+  color: @orange;
+}
+
+#temperature {
+  color: @red;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#battery {
+  color: @green;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
+#custom-updates {
+  color: @red;
+}
+
+#custom-dunst {
+  color: @aqua;
+}
+
+#bluetooth {
+  color: @aqua;
+}
+
+/*---*/
+
+#tray {
+  background-color: @bg;
+
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  /* margin-left: 1rem; */
+}
+
+/* --- */
+
+#custom-power {
+  padding-right: 1.6rem;
+  color: @red;
+}

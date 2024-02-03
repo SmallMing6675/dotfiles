@@ -1,0 +1,76 @@
+
+format = """
+$directory\
+$git_branch\
+$character\
+"""
+
+right_format = """
+$sudo\
+"""
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+[line_break]
+disabled = true
+
+[character]
+success_symbol = "[❯](bold green)" 
+error_symbol = "[❯](bold red)"
+
+
+[sudo]
+format = "[$symbol]($style)"
+style = "bold yellow"
+symbol = " "
+disabled = false
+
+
+# Setting time on the prompt
+
+[time]
+disabled = false
+format = '[$time]($style)'
+time_format = "%H:%M"
+#utc_time_offset = "-5"
+time_range = "00:00:00-24:00:00"
+use_12hr = false
+style = "yellow"
+#time = 10:03:16
+
+[cmd_duration]
+min_time = 500
+format = "[$duration](orange)"
+
+[hostname]
+ssh_only = false
+# format = "[$ssh_symbol](bold blue) on [$hostname](bold red) "
+format = "[$hostname](bold red) "
+# trim_at = ".companyname.com"
+disabled = true
+
+[username]
+#style_user = "white bold"
+style_user = "aqua bold"
+style_root = "black bold"
+format = "[$user]($style)@"
+#format = "[$user : ]($style)"
+# format = "[🚀 : ]($style)"
+disabled = true
+show_always = true
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch(:$remote_branch)]($style) "
+style = "blue"
+# format = "[git:](bold lavender)[\\(](bold lavender)[$branch(:$remote_branch)]($style)[\\)](bold lavender) "
+
+[directory]
+format = "[$read_only]($read_only_style)[$path]($style) "
+read_only = " "
+truncation_length = 4
+home_symbol = "~"
+style = "green"
+
+

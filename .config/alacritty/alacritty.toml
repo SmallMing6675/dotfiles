@@ -1,0 +1,63 @@
+shell = "fish"
+
+[font]
+size = 16
+
+[font.normal]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Medium"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Medium"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Bold Italic"
+
+[window]
+dynamic_padding = true
+
+[window.padding]
+x = 6
+y = 6
+
+[cursor]
+unfocused_hollow = false
+
+[cursor.style]
+shape = "Underline"
+blinking = "On"
+
+
+
+
+
+[colors.primary]
+background = "#242933"
+foreground = "#BBC3D4"
+
+[colors.normal]
+black = "#2E3440"
+red = "#BF616A"
+green = "#A3BE8C"
+yellow = "#EBCB8B"
+blue = "#5E81AC"
+magenta = "#B48EAD"
+cyan = "#8FBCBB"
+white = "#ECEFF4"
+
+[colors.bright]
+black = "#2E3440"
+red = "#BF616A"
+green = "#A3BE8C"
+yellow = "#EBCB8B"
+blue = "#5E81AC"
+magenta = "#B48EAD"
+cyan = "#8FBCBB"
+white = "#ECEFF4"
+
