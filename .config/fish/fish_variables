@@ -1,6 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:nvim
+SETUVAR --export FZF_DEFAULT_OPTS:\x0a\x20\x20\x20\x20\x2d\x2dcolor\x3dfg\x3a\x23bbc3d4\x2cbg\x3a\x23242933\x2chl\x3a\x23ebcb8b\x0a\x20\x20\x20\x20\x2d\x2dcolor\x3dfg\x2b\x3a\x23bbc3d4\x2cbg\x2b\x3a\x23242933\x2chl\x2b\x3a\x23ebcb8b\x0a\x20\x20\x20\x20\x2d\x2dcolor\x3dinfo\x3a\x23eacb8a\x2cprompt\x3a\x23bf6069\x2cpointer\x3a\x23b48dac\x0a\x20\x20\x20\x20\x2d\x2dcolor\x3dmarker\x3a\x23a3be8b\x2cspinner\x3a\x23b48dac\x2cheader\x3a\x23a3be8b
+SETUVAR --export GRAVEYARD:/home/user/\x2elocal/share/Trash
 SETUVAR --export --path PATH:/home/user/\x2ecargo/bin\x1e/home/user/\x2ecargo/bin\x1e/usr/lib/safe\x2drm\x1e/home/user/\x2ecargo/bin\x1e/usr/local/sbin\x1e/home/user/\x2ecargo/bin\x1e/usr/local/bin\x1e/home/user/\x2ecargo/bin\x1e/usr/bin\x1e/home/user/\x2ecargo/bin\x1e/usr/bin/site_perl\x1e/home/user/\x2ecargo/bin\x1e/usr/bin/vendor_perl\x1e/home/user/\x2ecargo/bin\x1e/usr/bin/core_perl\x1e/home/user/\x2ecargo/bin
 SETUVAR --export VISUAL:nvim
 SETUVAR __fish_initialized:3400

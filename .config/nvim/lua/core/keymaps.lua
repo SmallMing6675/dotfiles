@@ -31,14 +31,6 @@ map("n", "<Leader>w", "<c-w>", { desc = "Window Options" })
 map("n", "<Leader>q", ":wq<CR>", { desc = "Save Then Exit" })
 map("n", "<Leader>x", ":q<CR>", { desc = "Exit" })
 
--- Move Lines
-map("n", "<C-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-map("n", "<C-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-map("i", "<C-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-map("i", "<C-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-map("v", "<C-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-map("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
-
 -- Using H/L to go to the begining and the end of line
 map("n", "H", "_", { desc = "Start of the line" })
 map("n", "L", "$", { desc = "End of the line" })
@@ -131,4 +123,7 @@ map("n", "gl", vim.diagnostic.open_float, { desc = "Open Float" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Goto Previous Diagnostic" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Goto Next Diagnostic" })
 
-map("n", "<leader>te", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })
+map("n", "<leader>tt", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })
+map("n", "<C-S-k>", "<cmd>tabnext<CR>", { desc = "Go To Next Tab" })
+map("n", "<C-S-j>", "<cmd>tabprevious<CR>", { desc = "Go To Previous Tab" })
+map("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "Create A New Tab" })
