@@ -30,6 +30,7 @@ set -Ux VISUAL nvim
 set -Ux GRAVEYARD ~/.local/share/Trash
 
 fish_add_path /home/user/.cargo/bin
+fish_add_path /home/user/.local/bin
 
 function bind_bang
     switch (commandline -t)[-1]

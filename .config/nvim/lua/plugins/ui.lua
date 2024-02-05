@@ -137,16 +137,7 @@ return {
 	},
 
 	-- Indent lines
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		opts = {},
-		config = function()
-			require("ibl").setup({
-				indent = { highlight = { "EndOfBuffer", "Comment" } },
-			})
-		end,
-	},
+	{ "lukas-reineke/indent-blankline.nvim" },
 
 	-- Key hints
 	{

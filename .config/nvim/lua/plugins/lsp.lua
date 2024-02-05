@@ -2,8 +2,8 @@ return {
 
 	-- Format on save
 	{
-
 		"sbdchd/neoformat",
+		lazy = false,
 		config = function()
 			vim.cmd([[augroup fmt
 				  autocmd!
