@@ -23,6 +23,7 @@ alias ....="cd ../../../"
 alias .....="cd ../../../../"
 alias ......="cd ../../../../../"
 alias sudo="doas"
+alias suspend="systemctl suspend"
 alias cursed-timer=~/projects/github/cursed-timer/target/debug/cursed-timer
 
 set -Ux EDITOR nvim

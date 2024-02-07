@@ -6,7 +6,6 @@
  * Configuration For Rofi Version: 1.7.3
  **/
 
-
 configuration {
 	/*---------- General setting ----------*/
 	modi: "drun,run,filebrowser,window";
@@ -23,7 +22,6 @@ configuration {
 
 	/*---------- Matching setting ----------*/
 	matching: "normal";
-	tokenize: true;
 
 	/*---------- SSH settings ----------*/
 	ssh-client: "ssh";

@@ -72,7 +72,7 @@ map("n", "<A-9>", "<Cmd>LualineBuffersJump! 9<CR>", { desc = "Go to Buffer 9" })
 map("n", "<A-0>", "<Cmd>LualineBuffersJump! $<CR>", { desc = "Go to Last Buffer" })
 
 -- Select all text in the current buffer
-map("n", "<leader>C", "ggvG<cr>", { desc = "Select all text" })
+map("n", "<leader>C", "ggVG<cr>", { desc = "Select all text" })
 
 -- Change split orientation
 map("n", "<leader>th", "<C-w>t<C-w>K", { desc = "Change Vertical to Horizontal" })
@@ -106,7 +106,7 @@ map("n", "<leader>cf", ":e ~/.config/nvim/ <CR>", { desc = "Open Config" })
 
 map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "LSP Rename" })
 map("n", "<F2>", "<nop>")
-map("n", "<leader>lf", vim.lsp.buf.format, { desc = "LSP Format" })
+map("n", "<leader>lm", vim.lsp.buf.format, { desc = "LSP Format" })
 map("n", "<F3>", "<nop>")
 map("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
 map("n", "<F4>", "<nop>")
