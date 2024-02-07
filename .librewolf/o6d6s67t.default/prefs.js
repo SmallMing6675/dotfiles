@@ -10,10 +10,10 @@
 // - set it within a user.js file in your profile.
 
 user_pref("accessibility.typeaheadfind.flashBar", 0);
-user_pref("app.update.lastUpdateTime.addon-background-update-timer", 1707242254);
-user_pref("app.update.lastUpdateTime.browser-cleanup-thumbnails", 1707324496);
-user_pref("app.update.lastUpdateTime.services-settings-poll-changes", 1707242254);
-user_pref("app.update.lastUpdateTime.xpi-signature-verification", 1707242254);
+user_pref("app.update.lastUpdateTime.addon-background-update-timer", 1707328655);
+user_pref("app.update.lastUpdateTime.browser-cleanup-thumbnails", 1707331696);
+user_pref("app.update.lastUpdateTime.services-settings-poll-changes", 1707328655);
+user_pref("app.update.lastUpdateTime.xpi-signature-verification", 1707328655);
 user_pref("browser.bookmarks.restore_default_bookmarks", false);
 user_pref("browser.contentblocking.category", "strict");
 user_pref("browser.display.use_document_fonts", 0);
@@ -74,7 +74,7 @@ user_pref("dom.security.https_only_mode_ever_enabled", true);
 user_pref("extensions.activeThemeID", "default-theme@mozilla.org");
 user_pref("extensions.blocklist.pingCountVersion", -1);
 user_pref("extensions.databaseSchema", 35);
-user_pref("extensions.getAddons.cache.lastUpdate", 1707242255);
+user_pref("extensions.getAddons.cache.lastUpdate", 1707328655);
 user_pref("extensions.getAddons.databaseSchema", 6);
 user_pref("extensions.lastAppBuildId", "20240123225120");
 user_pref("extensions.lastAppVersion", "122.0-1");
@@ -103,7 +103,7 @@ user_pref("font.name.monospace.x-western", "JetBrainsMono Nerd Font Mono");
 user_pref("font.name.sans-serif.x-western", "JetBrainsMono Nerd Font");
 user_pref("font.name.serif.x-western", "JetBrains Mono");
 user_pref("gecko.handlerService.defaultHandlersVersion", 1);
-user_pref("idle.lastDailyNotification", 1707241383);
+user_pref("idle.lastDailyNotification", 1707328781);
 user_pref("intl.accept_languages", "en-US, en");
 user_pref("javascript.use_us_english_locale", true);
 user_pref("layout.css.devPixelsPerPx", "1.2");

@@ -56,4 +56,5 @@ return {
 			require("codeium").setup({})
 		end,
 	},
+	{ "zhenyangze/vim-bitoai" },
 }
