@@ -111,6 +111,7 @@
 
 #battery {
   color: @green;
+  background-color: @bg;
 }
 
 #battery.charging {

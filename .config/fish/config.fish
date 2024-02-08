@@ -4,6 +4,7 @@ eval "$(starship init fish)"
 
 alias lgit="lazygit"
 alias cls="clear"
+alias copy="wl-copy"
 alias ls="eza"
 alias lt="eza --tree --level=3"
 alias l="eza -l"
