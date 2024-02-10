@@ -21,10 +21,10 @@ map({ "n", "v", "i" }, "<left>", "<nop>")
 map({ "n", "v", "i" }, "<right>", "<nop>")
 
 -- Telescope
-map("n", "<leader>ff", "<Cmd>Telescope find_files<CR>", { desc = "F]ind Files" })
-map("n", "<leader>fg", "<Cmd>Telescope live_grep<CR>", { desc = "F]ile Grep" })
-map("n", "<leader>fb", "<Cmd>Telescope buffers<CR>", { desc = "File Buffers" })
-map("n", "<leader>fr", "<Cmd>Telescope oldfiles<CR>", { desc = "Find Recent Files" })
+map("n", "<leader>ff", "<Cmd>Telescope find_files<CR>", { desc = "Find: Files" })
+map("n", "<leader>fg", "<Cmd>Telescope live_grep<CR>", { desc = "Find: Grep" })
+map("n", "<leader>fb", "<Cmd>Telescope buffers<CR>", { desc = "Find: Buffers" })
+map("n", "<leader>fr", "<Cmd>Telescope oldfiles<CR>", { desc = "Find: Recent Files" })
 
 ---- Normal mode
 map("n", "<Leader>w", "<c-w>", { desc = "Window Options" })
@@ -104,15 +104,15 @@ map("n", "<leader>cf", ":e ~/.config/nvim/ <CR>", { desc = "Open Config" })
 
 -- LSP Mappings
 
-map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "LSP Rename" })
+map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "LSP: Rename" })
 map("n", "<F2>", "<nop>")
-map("n", "<leader>lm", vim.lsp.buf.format, { desc = "LSP Format" })
+map("n", "<leader>lm", vim.lsp.buf.format, { desc = "LSP: Format" })
 map("n", "<F3>", "<nop>")
-map("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+map("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "LSP: Code Action" })
 map("n", "<F4>", "<nop>")
-map("n", "<leader>lt", vim.lsp.buf.type_definition, { desc = "LSP Type Definition" })
+map("n", "<leader>lt", vim.lsp.buf.type_definition, { desc = "LSP: Type Definition" })
 map("n", "go", "<nop>")
-map("n", "<leader>lf", vim.lsp.buf.references, { desc = "LSP Find References" })
+map("n", "<leader>lf", vim.lsp.buf.references, { desc = "LSP: Find References" })
 map("n", "gr", "<nop>")
 
 map("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
@@ -124,6 +124,15 @@ map("n", "[d", vim.diagnostic.goto_prev, { desc = "Goto Previous Diagnostic" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Goto Next Diagnostic" })
 
 map("n", "<leader>tt", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })
-map("n", "<C-S-k>", "<cmd>tabnext<CR>", { desc = "Go To Next Tab" })
-map("n", "<C-S-j>", "<cmd>tabprevious<CR>", { desc = "Go To Previous Tab" })
-map("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "Create A New Tab" })
+map("n", "<C-S-k>", "<cmd>tabnext<CR>", { desc = "Tab: Next" })
+map("n", "<C-S-j>", "<cmd>tabprevious<CR>", { desc = "Tab: Previous " })
+map("n", "<leader><tab>n", "<cmd>tabnew<CR>", { desc = "Tab: New" })
+
+local dapui = require("dapui")
+local dap = require("dap")
+
+map("n", "<leader>dt", dapui.toggle, { desc = "Debug: Toggle UI" })
+map("n", "<leader>db", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
+map("n", "<leader>dc", dap.continue, { desc = "Debug: Continue Execution" })
+map("n", "<leader>dsi", dap.step_into, { desc = "Debug: Step Into" })
+map("n", "<leader>dso", dap.step_out, { desc = "Debug: Set Out" })

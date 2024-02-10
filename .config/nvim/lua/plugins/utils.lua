@@ -23,6 +23,7 @@ return {
 			require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	},
+
 	{
 		"numToStr/Comment.nvim",
 		opts = {},
@@ -46,15 +47,4 @@ return {
 			})
 		end,
 	},
-	{
-		"Exafunction/codeium.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"hrsh7th/nvim-cmp",
-		},
-		config = function()
-			require("codeium").setup({})
-		end,
-	},
-	{ "zhenyangze/vim-bitoai" },
 }

@@ -10,32 +10,27 @@ vim.g.loaded_netrw = 0
 vim.g.loaded_netrwPlugin = 0
 
 -- tab size
+vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
 -- line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
-vim.opt.numberwidth = 2
+vim.opt.numberwidth = 4
+
+vim.opt.cursorline = true
 
 -- disable line wrapping
-vim.cmd(":set nowrap")
+vim.cmd([[
+set nowrap
+set clipboard+=unnamedplus
+set cmdheight=0
+set fillchars+=eob:\ 
 
--- set the clipboard to default system clipboard
--- requires a clipboard to be installed on your system
-vim.cmd("set clipboard+=unnamedplus")
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
+    augroup END
 
--- disable the command bar
-vim.cmd("set cmdheight=0")
-
--- Disable ~ at the end of the file
-vim.cmd("set signcolumn=no")
-vim.opt.fillchars:append("eob: ")
-
--- highlight on yank
-vim.cmd([[  
-	augroup highlight_yank
-	autocmd!
-	au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
-	augroup END
-]])
+set noswapfile]])

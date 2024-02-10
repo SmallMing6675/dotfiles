@@ -6,9 +6,9 @@ return {
 		lazy = false,
 		config = function()
 			vim.cmd([[augroup fmt
-				  autocmd!
-				  autocmd BufWritePre * Neoformat
-				  augroup END]])
+                  autocmd!
+                  autocmd BufWritePre * Neoformat
+                  augroup END]])
 		end,
 	},
 
@@ -18,6 +18,7 @@ return {
 		dependencies = { "williamboman/mason.nvim", "williamboman/mason-lspconfig", "neovim/nvim-lspconfig" },
 		lazy = false,
 		config = function()
+			vim.g.lsp_zero_extend_lspconfig = 0
 			local lsp_zero = require("lsp-zero")
 
 			lsp_zero.on_attach(function(client, bufnr)
@@ -25,9 +26,9 @@ return {
 			end)
 			require("mason").setup({})
 			require("mason-lspconfig").setup({
-				ensure_installed = { "rust_analyzer" }, -- Replace with the lanuage servers you want to install
 				handlers = {
 					lsp_zero.default_setup,
+					rust_analyzer = function() end,
 				},
 			})
 		end,
