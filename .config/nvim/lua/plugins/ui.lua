@@ -70,21 +70,13 @@ return {
 		end,
 	},
 
-	-- Nordic colorscheme, Swap this with your own colorscheme
 	{
-		"AlexvZyl/nordic.nvim",
+
+		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("nordic").load({
-				leap = {
-					-- Dims the backdrop when using leap.
-					dim_backdrop = true,
-				},
-			})
-			vim.cmd.colorscheme("nordic")
-			vim.cmd(":hi CursorLine guifg=none guibg=none")
-			vim.cmd(":hi WinSeparator guifg=#242933 ")
+			vim.cmd.colorscheme("tokyonight-night")
 		end,
 	},
 
@@ -114,7 +106,7 @@ return {
 					lualine_z = { "location" },
 				},
 				options = {
-					theme = "nordic", -- Replace this with your own theme
+					theme = "tokyonight", -- Replace this with your own theme
 					globalstatus = true,
 					component_separators = { left = " ", right = " " },
 					section_separators = { left = "", right = "" },
