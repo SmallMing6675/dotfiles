@@ -23,8 +23,10 @@ map({ "n", "v", "i" }, "<right>", "<nop>")
 -- Telescope
 map("n", "<leader>ff", "<Cmd>Telescope find_files<CR>", { desc = "Find: Files" })
 map("n", "<leader>fg", "<Cmd>Telescope live_grep<CR>", { desc = "Find: Grep" })
+map("n", "<leader>fc", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Find: Grep Within Current Buffer" })
 map("n", "<leader>fb", "<Cmd>Telescope buffers<CR>", { desc = "Find: Buffers" })
 map("n", "<leader>fr", "<Cmd>Telescope oldfiles<CR>", { desc = "Find: Recent Files" })
+map("n", "<leader>fm", "<Cmd>Telescope man_pages<CR>", { desc = "Find: Man Pages" })
 
 ---- Normal mode
 map("n", "<Leader>w", "<c-w>", { desc = "Window Options" })
@@ -99,9 +101,6 @@ map("n", "<A-l>", "<C-w>l", { desc = "Window Right" })
 -- Undo Tree
 map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undo Tree" })
 
--- Config
-map("n", "<leader>cf", ":e ~/.config/nvim/ <CR>", { desc = "Open Config" })
-
 -- LSP Mappings
 
 map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "LSP: Rename" })
@@ -123,7 +122,7 @@ map("n", "gl", vim.diagnostic.open_float, { desc = "Open Float" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Goto Previous Diagnostic" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Goto Next Diagnostic" })
 
-map("n", "<leader>tt", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })
+map("n", "<leader>tt", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle Terminal" })
 map("n", "<C-S-k>", "<cmd>tabnext<CR>", { desc = "Tab: Next" })
 map("n", "<C-S-j>", "<cmd>tabprevious<CR>", { desc = "Tab: Previous " })
 map("n", "<leader><tab>n", "<cmd>tabnew<CR>", { desc = "Tab: New" })

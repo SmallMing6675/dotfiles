@@ -1,5 +1,5 @@
 set fish_greeting
-eval "$(zoxide init fish)"
+eval "$(zoxide init fish --cmd cd)"
 eval "$(starship init fish)"
 
 alias lgit="lazygit"
@@ -11,7 +11,7 @@ alias l="eza -l"
 alias logout="loginctl terminate-session self"
 alias vim="nvim"
 alias v="nvim"
-alias cd="z"
+alias nvim='nvim --startuptime /tmp/nvim-startuptime'
 alias rm="rip"
 alias cat="bat"
 alias rrepl="evcxr"
@@ -25,6 +25,7 @@ alias .....="cd ../../../../"
 alias ......="cd ../../../../../"
 alias sudo="doas"
 alias suspend="systemctl suspend"
+alias cheat="navi"
 alias cursed-timer=~/projects/github/cursed-timer/target/debug/cursed-timer
 
 set -Ux EDITOR nvim

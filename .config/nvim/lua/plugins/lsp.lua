@@ -36,7 +36,6 @@ return {
 
 	-- Code auto completion
 	{
-
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
@@ -46,12 +45,41 @@ return {
 			"neovim/nvim-lspconfig",
 			"saadparwaiz1/cmp_luasnip",
 			"L3MON4D3/LuaSnip",
+			"onsails/lspkind.nvim",
 		},
 		lazy = false,
 
 		config = function()
 			local cmp = require("cmp")
 
+			local kind_icons = {
+				Text = "",
+				Method = "󰆧",
+				Function = "󰊕",
+				Constructor = "",
+				Field = "󰇽",
+				Variable = "",
+				Class = "󰠱",
+				Interface = "",
+				Module = "",
+				Property = "󰜢",
+				Unit = "",
+				Value = "",
+				Enum = "",
+				Keyword = "󰌋",
+				Snippet = "",
+				Color = "󰏘",
+				File = "󰈙",
+				Reference = "",
+				Folder = "󰉋",
+				EnumMember = "",
+				Constant = "",
+				Struct = "",
+				Event = "",
+				Operator = "󰆕",
+				TypeParameter = "󰅲",
+				Codeium = "",
+			}
 			cmp.setup({
 				snippet = {
 					expand = function(args)
@@ -61,6 +89,14 @@ return {
 				completion = {
 					completeopt = "menu,menuone,noinsert",
 				},
+
+				formatting = {
+					format = function(entry, vim_item)
+						vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
+						return vim_item
+					end,
+				},
+
 				mapping = cmp.mapping.preset.insert({
 					["<C-k>"] = cmp.mapping.select_prev_item(),
 					["<C-j>"] = cmp.mapping.select_next_item(),
@@ -74,9 +110,10 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
-					{ name = "codeium" },
 				}, {
 					{ name = "buffer" },
+
+					{ name = "codeium" },
 				}),
 				enabled = function()
 					-- disable completion in comments

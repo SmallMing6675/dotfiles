@@ -17,7 +17,6 @@ return {
 				dashboard.button("SPC F R", " Recent Files"),
 				dashboard.button("SPC F F", " Find File"),
 				dashboard.button("SPC F G", " Find Text"),
-				dashboard.button("SPC C F", " Open Config"),
 				dashboard.button("SPC X", "󰗼 Exit"),
 			}
 
@@ -28,12 +27,16 @@ return {
 				-- button.opts.hl_shortcut = "CursorLineNr"
 				button.opts.width = 40
 			end
+
 			dashboard.opts.layout = {
 				{ type = "padding", val = 10 },
 				dashboard.section.header,
 				{ type = "padding", val = 2 },
 				dashboard.section.buttons,
+				{ type = "padding", val = 2 },
+				dashboard.section.footer,
 			}
+
 			return dashboard
 		end,
 		config = function(_, dashboard)
@@ -49,6 +52,21 @@ return {
 				})
 			end
 			require("alpha").setup(dashboard.opts)
+
+			vim.api.nvim_create_autocmd("User", {
+				callback = function()
+					local stats = require("lazy").stats()
+					local ms = math.floor(stats.startuptime * 100) / 100
+					dashboard.section.footer.val = "󱐌 Lazy-loaded "
+						.. stats.loaded
+						.. "/"
+						.. stats.count
+						.. " plugins in "
+						.. ms
+						.. "ms"
+					pcall(vim.cmd.AlphaRedraw)
+				end,
+			})
 		end,
 	},
 
@@ -142,7 +160,12 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
-			require("ibl").setup()
+			require("ibl").setup({
+				scope = {
+					enabled = true,
+					highlight = { "keyword", "Label" },
+				},
+			})
 		end,
 	},
 
@@ -159,16 +182,13 @@ return {
 				["]"] = { name = "+next" },
 				["["] = { name = "+prev" },
 				["<leader><tab>"] = { name = "+tabs" },
-				["<leader>b"] = { name = "+buffer" },
-				["<leader>c"] = { name = "+code" },
+				["<leader>d"] = { name = "+debug" },
 				["<leader>f"] = { name = "+file/find" },
-				["<leader>g"] = { name = "+git" },
-				["<leader>gh"] = { name = "+hunks" },
-				["<leader>q"] = { name = "+quit/session" },
-				["<leader>s"] = { name = "+search" },
-				["<leader>u"] = { name = "+ui" },
 				["<leader>w"] = { name = "+windows" },
-				["<leader>x"] = { name = "+diagnostics/quickfix" },
+				["<leader>l"] = { name = "+LSP" },
+				["<leader>m"] = { name = "+LSP Goto Next" },
+				["<leader>p"] = { name = "+LSP Goto Previous" },
+				["<leader>t"] = { name = "+Terminal" },
 			},
 			layout = {
 				spacing = 0,
@@ -203,6 +223,31 @@ return {
 			t["<C-A-k>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "450" } }
 			t["<C-A-j>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "450" } }
 			require("neoscroll.config").set_mappings(t)
+		end,
+	},
+	{
+		"folke/noice.nvim",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+		config = function()
+			require("noice").setup({
+				lsp = {
+					override = {
+						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+						["vim.lsp.util.stylize_markdown"] = true,
+						["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+					},
+				},
+				presets = {
+					bottom_search = false,
+					command_palette = true,
+					long_message_to_split = true,
+					inc_rename = false,
+					lsp_doc_border = false,
+				},
+			})
 		end,
 	},
 }
