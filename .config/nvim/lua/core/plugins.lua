@@ -11,4 +11,28 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup({ { import = "plugins" } })
+require("lazy").setup({
+	{
+		import = "plugins",
+
+		performance = {
+			cache = {
+				enabled = true,
+			},
+			rtp = {
+				disabled_plugins = {
+					-- "matchit",
+					-- "matchparen",
+					"netrwPlugin",
+					"gzip",
+					"tarPlugin",
+					"tohtml",
+					"tutor",
+					"zipPlugin",
+				},
+			},
+		},
+	},
+})
+
+vim.cmd("silent TSUpdate")

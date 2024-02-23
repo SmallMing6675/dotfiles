@@ -28,9 +28,17 @@ alias suspend="systemctl suspend"
 alias cheat="navi"
 alias ff="fzf"
 
+alias cff="cd (fd -H --type directory | ff)"
+
 set -Ux EDITOR nvim
 set -Ux VISUAL nvim
 set -Ux GRAVEYARD ~/.local/share/Trash
+set -gx FZF_DEFAULT_OPTS "--border \
+--color=fg:#c0caf5,bg:#1a1b26,hl:#ff9e64 \
+--color=fg+:#c0caf5,bg+:#292e42,hl+:#ff9e64 \
+--color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff \
+--color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a \
+--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 fish_add_path /home/user/.cargo/bin
 fish_add_path /home/user/.local/bin
@@ -60,13 +68,6 @@ function fish_user_key_bindings
 end
 
 thefuck --alias | source
-set -Ux FZF_DEFAULT_OPTS '
-    --color=fg:#bbc3d4,bg:#242933,hl:#ebcb8b
-    --color=fg+:#bbc3d4,bg+:#242933,hl+:#ebcb8b
-    --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
-    --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
-
-
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end

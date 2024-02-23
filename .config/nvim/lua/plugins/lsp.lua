@@ -3,7 +3,6 @@ return {
 	-- Format on save
 	{
 		"sbdchd/neoformat",
-		lazy = false,
 		config = function()
 			vim.cmd([[augroup fmt
                   autocmd!
@@ -15,29 +14,11 @@ return {
 	-- LSP Config
 	{
 		"VonHeikemen/lsp-zero.nvim",
-		dependencies = { "williamboman/mason.nvim", "williamboman/mason-lspconfig", "neovim/nvim-lspconfig" },
-		lazy = false,
-		config = function()
-			vim.g.lsp_zero_extend_lspconfig = 0
-			local lsp_zero = require("lsp-zero")
-
-			lsp_zero.on_attach(function(client, bufnr)
-				lsp_zero.default_keymaps({ buffer = bufnr })
-			end)
-			require("mason").setup({})
-			require("mason-lspconfig").setup({
-				handlers = {
-					lsp_zero.default_setup,
-					rust_analyzer = function() end,
-				},
-			})
-		end,
-	},
-
-	-- Code auto completion
-	{
-		"hrsh7th/nvim-cmp",
 		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig",
+			"neovim/nvim-lspconfig",
+			"hrsh7th/nvim-cmp",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
@@ -47,9 +28,23 @@ return {
 			"L3MON4D3/LuaSnip",
 			"onsails/lspkind.nvim",
 		},
-		lazy = false,
-
 		config = function()
+			local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			local default_setup = function(server)
+				require("lspconfig")[server].setup({
+					capabilities = lsp_capabilities,
+				})
+			end
+
+			require("mason").setup({})
+			require("mason-lspconfig").setup({
+				ensure_installed = {},
+				handlers = {
+					default_setup,
+				},
+			})
+
 			local cmp = require("cmp")
 
 			local kind_icons = {
@@ -80,6 +75,7 @@ return {
 				TypeParameter = "󰅲",
 				Codeium = "",
 			}
+
 			cmp.setup({
 				snippet = {
 					expand = function(args)
@@ -112,8 +108,6 @@ return {
 					{ name = "luasnip" },
 				}, {
 					{ name = "buffer" },
-
-					{ name = "codeium" },
 				}),
 				enabled = function()
 					-- disable completion in comments

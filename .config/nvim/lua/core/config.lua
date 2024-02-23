@@ -21,6 +21,10 @@ vim.opt.numberwidth = 4
 
 vim.opt.cursorline = true
 
+vim.opt.lazyredraw = false
+vim.opt.updatetime = 300
+vim.opt.timeoutlen = 500
+
 -- disable line wrapping
 vim.cmd([[
 set nowrap

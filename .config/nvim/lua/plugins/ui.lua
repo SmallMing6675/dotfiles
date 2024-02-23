@@ -73,7 +73,6 @@ return {
 	{
 
 		"folke/tokyonight.nvim",
-		lazy = false,
 		priority = 1000,
 		config = function()
 			vim.cmd.colorscheme("tokyonight-night")
@@ -84,6 +83,7 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+		event = "VeryLazy",
 		config = function()
 			require("lualine").setup({
 				sections = {

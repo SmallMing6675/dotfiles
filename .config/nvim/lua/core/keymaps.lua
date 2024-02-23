@@ -84,7 +84,7 @@ map("n", "<leader>tv", "<C-w>t<C-w>H", { desc = "Change Horizontal to Vertical" 
 map("n", "<leader>r", ":so %<CR>", { desc = "Reload Configuration" })
 
 -- Toggle Tagbar
-map("n", "<leader>tb", "<Cmd>AerialToggle!<CR>", { desc = "Toggle TagBar" })
+map("n", "<leader>tb", "<Cmd>Vista!!<CR>", { desc = "Toggle TagBar" })
 
 -- Resize Windows
 map("n", "=", "<cmd>horizontal resize +5<cr>", { desc = "Resize Window Up" })
@@ -126,12 +126,3 @@ map("n", "<leader>tt", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle T
 map("n", "<C-S-k>", "<cmd>tabnext<CR>", { desc = "Tab: Next" })
 map("n", "<C-S-j>", "<cmd>tabprevious<CR>", { desc = "Tab: Previous " })
 map("n", "<leader><tab>n", "<cmd>tabnew<CR>", { desc = "Tab: New" })
-
-local dapui = require("dapui")
-local dap = require("dap")
-
-map("n", "<leader>dt", dapui.toggle, { desc = "Debug: Toggle UI" })
-map("n", "<leader>db", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
-map("n", "<leader>dc", dap.continue, { desc = "Debug: Continue Execution" })
-map("n", "<leader>dsi", dap.step_into, { desc = "Debug: Step Into" })
-map("n", "<leader>dso", dap.step_out, { desc = "Debug: Set Out" })

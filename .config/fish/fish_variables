@@ -1,37 +1,19 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:nvim
-SETUVAR --export FZF_DEFAULT_OPTS:\x0a\x20\x20\x20\x20\x2d\x2dcolor\x3dfg\x3a\x23bbc3d4\x2cbg\x3a\x23242933\x2chl\x3a\x23ebcb8b\x0a\x20\x20\x20\x20\x2d\x2dcolor\x3dfg\x2b\x3a\x23bbc3d4\x2cbg\x2b\x3a\x23242933\x2chl\x2b\x3a\x23ebcb8b\x0a\x20\x20\x20\x20\x2d\x2dcolor\x3dinfo\x3a\x23eacb8a\x2cprompt\x3a\x23bf6069\x2cpointer\x3a\x23b48dac\x0a\x20\x20\x20\x20\x2d\x2dcolor\x3dmarker\x3a\x23a3be8b\x2cspinner\x3a\x23b48dac\x2cheader\x3a\x23a3be8b
+SETUVAR --export FZF_DEFAULT_OPTS:
 SETUVAR --export GRAVEYARD:/home/user/\x2elocal/share/Trash
-SETUVAR --export --path PATH:/home/user/\x2ecargo/bin\x1e/home/user/\x2ecargo/bin\x1e/usr/lib/safe\x2drm\x1e/home/user/\x2ecargo/bin\x1e/usr/local/sbin\x1e/home/user/\x2ecargo/bin\x1e/usr/local/bin\x1e/home/user/\x2ecargo/bin\x1e/usr/bin\x1e/home/user/\x2ecargo/bin\x1e/usr/bin/site_perl\x1e/home/user/\x2ecargo/bin\x1e/usr/bin/vendor_perl\x1e/home/user/\x2ecargo/bin\x1e/usr/bin/core_perl\x1e/home/user/\x2ecargo/bin
+SETUVAR --export RUST_BACKTRACE:1
 SETUVAR --export VISUAL:nvim
 SETUVAR __fish_initialized:3400
-SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
-SETUVAR fish_color_command:blue
-SETUVAR fish_color_comment:red
 SETUVAR fish_color_cwd:green
 SETUVAR fish_color_cwd_root:red
-SETUVAR fish_color_end:green
-SETUVAR fish_color_error:brred
-SETUVAR fish_color_escape:brcyan
 SETUVAR fish_color_history_current:\x2d\x2dbold
 SETUVAR fish_color_host:normal
 SETUVAR fish_color_host_remote:yellow
-SETUVAR fish_color_normal:normal
-SETUVAR fish_color_operator:brcyan
-SETUVAR fish_color_param:cyan
-SETUVAR fish_color_quote:yellow
-SETUVAR fish_color_redirection:cyan\x1e\x2d\x2dbold
-SETUVAR fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack
-SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
 SETUVAR fish_key_bindings:fish_default_key_bindings
-SETUVAR fish_pager_color_completion:normal
-SETUVAR fish_pager_color_description:yellow\x1e\x2di
-SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
-SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR fish_user_paths:/home/user/\x2elocal/bin\x1e/home/user/\x2ecargo/bin
