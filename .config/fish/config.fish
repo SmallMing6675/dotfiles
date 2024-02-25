@@ -33,6 +33,7 @@ alias cff="cd (fd -H --type directory | ff)"
 set -Ux EDITOR nvim
 set -Ux VISUAL nvim
 set -Ux GRAVEYARD ~/.local/share/Trash
+set -gx SHELL /usr/bin/fish
 set -gx FZF_DEFAULT_OPTS "--border \
 --color=fg:#c0caf5,bg:#1a1b26,hl:#ff9e64 \
 --color=fg+:#c0caf5,bg+:#292e42,hl+:#ff9e64 \
