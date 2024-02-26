@@ -23,10 +23,10 @@
   },
 
   "hyprland/workspaces": {
-    "sort-by-name": true,
-    "format": "{icon}",
+    "format": "{name}",
     "show-special": true,
-    "persistent-workspaces": { "*": 10 },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
     "format-icons": {
       "active": "",
       "empty": "",

@@ -45,8 +45,9 @@
   padding: 0rem 0.5rem;
 }
 
+
 #workspaces button {
-  color: @yellow-dim;
+  color: @bg4;
   background-color: transparent;
   padding: 3px 3px;
   margin: 0.3rem 0;

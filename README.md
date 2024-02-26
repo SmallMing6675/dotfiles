@@ -16,6 +16,14 @@ Make sure you have the following packages installed on your system before procee
 - rofi
 - waybar
 
+Assuming you are using an Arch based system and you have `yay` installed on your system,
+simply run:
+```
+pacman -S Hyprland rofi fish kitty neovim vim starship waybar git stow 
+#essential tools
+pacman -S brightnessctl eza fd librewolf-bin hyprpicker lazygit neofetch pavucontrol ripgrep pipewire wl-clipboard zoxide 
+```
+
 To apply:
 
 ```bash
