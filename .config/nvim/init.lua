@@ -1,4 +1,5 @@
 vim.loader.enable()
+
 ------------ Configuration for neovim itself -------------
 vim.g.mapleader = " "
 vim.g.loaded_netrw = 0
@@ -29,8 +30,6 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 
 map("n", "<Leader>q", ":wq<CR>", { desc = "Save Then Exit" })
 map("n", "<Leader>x", ":q<CR>", { desc = "Exit" })
-map("n", "H", "_", { desc = "Start of the line" })
-map("n", "L", "$", { desc = "End of the line" })
 map("n", "<leader>v", ":vsplit<CR>", { desc = "Open Vertical Split" })
 map("n", "<leader>h", ":split<CR>", { desc = "Open Horizontal Split" })
 map("n", "<leader>q", "<Cmd>wq<CR>", { desc = "Close Buffer" })
@@ -50,16 +49,12 @@ map("n", "<A-j>", "<C-w>j", { desc = "Window Down" })
 map("n", "<A-k>", "<C-w>k", { desc = "Window Up" })
 map("n", "<A-l>", "<C-w>l", { desc = "Window Right" })
 
-map("n", "<C-S-k>", "<cmd>tabnext<CR>", { desc = "Tab: Next" })
-map("n", "<C-S-j>", "<cmd>tabprevious<CR>", { desc = "Tab: Previous " })
-map("n", "<leader><tab>n", "<cmd>tabnew<CR>", { desc = "Tab: New" })
-map("n", "<leader><tab>j", "<cmd>tabnext<CR>", { desc = "Tab: Next" })
-map("n", "<leader><tab>k", "<cmd>tabprevious<CR>", { desc = "Tab: Previous " })
-map("n", "<leader><tab>x", "<cmd>tabclose<CR>", { desc = "Tab: Close " })
-
-map("n", "<a-f>", "<Cmd>Telescope find_files<CR>", { desc = "Find: Files" })
-map("n", "<a-r>", "<Cmd>Telescope oldfiles<CR>", { desc = "Find: Recent Files" })
-map("n", "<a-g>", "<Cmd>Telescope live_grep<CR>", { desc = "Find: Grep" })
+map("n", "<C-l>", "<cmd>tabnext<CR>", { desc = "Tab: Next" })
+map("n", "<C-h>", "<cmd>tabprevious<CR>", { desc = "Tab: Previous " })
+map("n", "<tab>n", "<cmd>tabnew<CR>", { desc = "Tab: New" })
+map("n", "<tab>j", "<cmd>tabnext<CR>", { desc = "Tab: Next" })
+map("n", "<tab>k", "<cmd>tabprevious<CR>", { desc = "Tab: Previous " })
+map("n", "<tab>x", "<cmd>tabclose<CR>", { desc = "Tab: Close " })
 
 map("n", "J", "<C-d>")
 map("n", "K", "<C-u>")
@@ -83,9 +78,6 @@ local plugins = {
 			ensure_installed = { "rust", "python", "c", "lua", "vim", "vimdoc", "query" },
 			auto_install = true,
 		},
-		config = function(opts)
-			require("nvim-treesitter.configs").setup({ opts })
-		end,
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -93,15 +85,20 @@ local plugins = {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-fzy-native.nvim",
+			"debugloop/telescope-undo.nvim",
+		},
+		keys = {
+			{ "<a-u>", "<cmd>Telescope undo<cr>", desc = "undo history" },
+			{ "<a-f>", "<Cmd>Telescope find_files<CR>", desc = "Find: Files" },
+			{ "<a-r>", "<Cmd>Telescope oldfiles<CR>", desc = "Find: Recent Files" },
+			{ "<a-g>", "<Cmd>Telescope live_grep<CR>", desc = "Find: Grep" },
 		},
 		cmd = "Telescope",
 		config = function()
 			local telescope = require("telescope")
-			telescope.setup({
-				defaults = { border = false },
-				extensions = { file_browser = { hijack_netrw = true } },
-			})
+			telescope.setup({ defaults = { border = false }, extensions = { file_browser = { hijack_netrw = true } } })
 			telescope.load_extension("fzy_native")
+			require("telescope").load_extension("undo")
 		end,
 	},
 	{
@@ -118,7 +115,6 @@ local plugins = {
 				for _, item in ipairs(harpoon_files.items) do
 					table.insert(file_paths, item.value)
 				end
-
 				require("telescope.pickers")
 					.new({}, {
 						prompt_title = "Harpoon",
@@ -145,14 +141,6 @@ local plugins = {
 		end,
 	},
 	{
-		"jiaoshijie/undotree",
-		dependencies = "nvim-lua/plenary.nvim",
-		config = true,
-		keys = { -- load the plugin only when using it's keybinding:
-			{ "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
-		},
-	},
-	{
 		"sbdchd/neoformat",
 		event = "BufWritePre",
 		config = function()
@@ -161,13 +149,12 @@ local plugins = {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		lazy = false,
+		event = { "BufReadPost", "BufNewFile" },
+		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 		dependencies = { "williamboman/mason-lspconfig", "williamboman/mason.nvim" },
 		config = function()
 			require("mason").setup()
-			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "rust_analyzer", "clangd" },
-			})
+			require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "rust_analyzer", "clangd" } })
 			require("mason-lspconfig").setup_handlers({
 				function(server_name)
 					require("lspconfig")[server_name].setup({})
@@ -197,6 +184,7 @@ local plugins = {
 			"saadparwaiz1/cmp_luasnip",
 			"L3MON4D3/LuaSnip",
 		},
+
 		config = function()
 			local cmp = require("cmp")
             -- stylua: ignore
@@ -220,13 +208,13 @@ local plugins = {
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
 				}),
 				sources = {
-					{ name = "nvim_lsp", max_item_count = 5 },
+					{ name = "nvim_lsp" },
 					{ name = "buffer", max_item_count = 3 },
 					{ name = "luasnip", max_item_count = 5 },
 				},
 				window = {
-					completion = cmp.config.window.bordered({ border = "none" }),
-					documentation = cmp.config.window.bordered({ border = "none" }),
+					completion = { border = "none", winhighlight = "NormalSB:CmpNormal" },
+					documentation = { border = "none" },
 				},
 			})
 			cmp.setup.cmdline(
@@ -239,6 +227,7 @@ local plugins = {
 			)
 		end,
 	},
+
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "UIEnter",
@@ -247,9 +236,8 @@ local plugins = {
             -- stylua: ignore
             local files = { {"filename", symbols = {modified = "󱇧", readonly = "",unnamed = "󰲶", newfile = ""} } }
 			require("lualine").setup({
-				sections = { lualine_c = files, lualine_x = { "filetype" }, lualine_y = { "diagnostics" } },
+				sections = { lualine_c = files, lualine_x = { "filetype" }, lualine_y = { "tabs" } },
 				options = { theme = "tokyonight", section_separators = { left = "", right = "" } },
-				tabline = { lualine_a = { "buffers" }, lualine_y = files, lualine_z = { "tabs" } },
 				extensions = { "fzf", "lazy", "neo-tree", "fzf", "toggleterm" },
 			})
 			for i = 1, 9 do
@@ -264,7 +252,7 @@ local plugins = {
 		"folke/noice.nvim",
 		event = "UIEnter",
 		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
-		opts = { resets = { command_palette = true, lsp_doc_border = false } },
+		opts = { presets = { command_palette = true, lsp_doc_border = false, long_message_to_split = true } },
 	},
 	{
 		"folke/flash.nvim",
@@ -302,15 +290,15 @@ local plugins = {
         {"echasnovski/mini.pairs" , event = "InsertEnter", config = function() require("mini.pairs").setup() end},
         {"echasnovski/mini.animate", event = "UIEnter",  config = function() require("mini.animate").setup() end},
         {"echasnovski/mini.comment", keys = "gc", config = function() require("mini.comment").setup() end},
-	    {"lukas-reineke/indent-blankline.nvim", event = "BufEnter", main = "ibl", opts = { scope = { highlight = "Function" } } },
-    	{"folke/which-key.nvim", keys = { "<leader>", "c", "v", "g" }, opts = { layout = { align = "center" } } },
+        {"folke/which-key.nvim", keys = { "<leader>", "c", "v", "g" }, opts = { layout = { align = "center" } } },
+		{"lukas-reineke/indent-blankline.nvim", event = "UIEnter", opts = { scope = { enabled = false } },  main = "ibl" },
     },
 }
 -- stylua: ignore
 require("lazy").setup({
-	spec = plugins,
-	defaults = { lazy = true, version = false, config = true, event = "VeryLazy" },
-    performance = { cache = { enabled = true, }, rtp = { disabled_plugins = {"2html_plugin", "bugreport", "compiler", "ftplugin", "getscript", "getscriptPlugin", "gzip", "logipat", "matchit", "netrw", "netrwFileHandlers", "netrwPlugin", "netrwSettings", "optwin", "rplugin", "rrhelper", "spellfile_plugin", "synmenu", "syntax", "tar", "tarPlugin", "tohtml", "tutor", "vimball", "vimballPlugin", "zip", "zipPlugin"}}}
+    spec = plugins,
+    defaults = { lazy = true, version = false, config = true, event = "VeryLazy" },
+    performance = { cache = { enabled = true, }, rtp = { disabled_plugins = {"2html_plugin", "bugreport", "compiler", "ftplugin", "getscript", "getscriptPlugin", "gzip", "logipat", "matchit", "netrw", "netrwFileHandlers", "netrwPlugin", "netrwSettings", "optwin", "rplugin", "rrhelper", "spellfile_plugin", "synmenu", "syntax", "tar", "tarPlugin", "tohtml", "tutor", "vimball", "vimballPlugin", "zip", "zipPlugin", "editorconfig", "man", "health", "matchparen", "spellfile", "shada"}}}
 })
 ---------- autocmds ----------
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -327,21 +315,19 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 vim.api.nvim_create_autocmd("UIEnter", {
 	callback = function()
-		vim.cmd("TSUpdate")
-		vim.cmd("TSEnable highlight")
+		vim.cmd("silent TSUpdate")
 		vim.cmd.colorscheme("tokyonight-night")
-		vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "none" })
 	end,
 })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("highlight_yank", {}),
 	callback = function()
-		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 500 })
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 300 })
 	end,
 })
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-	callback = function(ev)
+	callback = function(_)
 		map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "LSP: Rename" })
 		map("n", "<leader>lm", vim.lsp.buf.format, { desc = "LSP: Format" })
 		map("n", "<leader>lc", vim.lsp.buf.code_action, { desc = "LSP: Code Action" })

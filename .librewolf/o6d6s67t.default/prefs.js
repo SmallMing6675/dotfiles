@@ -10,10 +10,10 @@
 // - set it within a user.js file in your profile.
 
 user_pref("accessibility.typeaheadfind.flashBar", 0);
-user_pref("app.update.lastUpdateTime.addon-background-update-timer", 1708970152);
-user_pref("app.update.lastUpdateTime.browser-cleanup-thumbnails", 1708974771);
-user_pref("app.update.lastUpdateTime.services-settings-poll-changes", 1708970152);
-user_pref("app.update.lastUpdateTime.xpi-signature-verification", 1708970152);
+user_pref("app.update.lastUpdateTime.addon-background-update-timer", 1709056553);
+user_pref("app.update.lastUpdateTime.browser-cleanup-thumbnails", 1709106799);
+user_pref("app.update.lastUpdateTime.services-settings-poll-changes", 1709056553);
+user_pref("app.update.lastUpdateTime.xpi-signature-verification", 1709056553);
 user_pref("browser.bookmarks.editDialog.confirmationHintShowCount", 2);
 user_pref("browser.bookmarks.restore_default_bookmarks", false);
 user_pref("browser.contentblocking.category", "strict");
@@ -43,8 +43,8 @@ user_pref("browser.safebrowsing.downloads.remote.block_uncommon", false);
 user_pref("browser.safebrowsing.downloads.remote.enabled", false);
 user_pref("browser.safebrowsing.downloads.remote.url", "");
 user_pref("browser.safebrowsing.provider.google4.dataSharingURL", "");
-user_pref("browser.safebrowsing.provider.mozilla.lastupdatetime", "1708933168725");
-user_pref("browser.safebrowsing.provider.mozilla.nextupdatetime", "1708954768725");
+user_pref("browser.safebrowsing.provider.mozilla.lastupdatetime", "1709106763281");
+user_pref("browser.safebrowsing.provider.mozilla.nextupdatetime", "1709128363281");
 user_pref("browser.sessionstore.upgradeBackup.latestBuildID", "20240224121330");
 user_pref("browser.shell.mostRecentDateSetAsDefault", "1708633304");
 user_pref("browser.startup.couldRestoreSession.count", 1);
@@ -81,7 +81,7 @@ user_pref("dom.security.https_only_mode_ever_enabled", true);
 user_pref("extensions.activeThemeID", "default-theme@mozilla.org");
 user_pref("extensions.blocklist.pingCountVersion", -1);
 user_pref("extensions.databaseSchema", 35);
-user_pref("extensions.getAddons.cache.lastUpdate", 1708970152);
+user_pref("extensions.getAddons.cache.lastUpdate", 1709056553);
 user_pref("extensions.getAddons.databaseSchema", 6);
 user_pref("extensions.lastAppBuildId", "20240224121330");
 user_pref("extensions.lastAppVersion", "123.0-1");
