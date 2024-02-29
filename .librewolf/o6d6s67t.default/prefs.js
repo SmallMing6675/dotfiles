@@ -10,10 +10,10 @@
 // - set it within a user.js file in your profile.
 
 user_pref("accessibility.typeaheadfind.flashBar", 0);
-user_pref("app.update.lastUpdateTime.addon-background-update-timer", 1709056553);
-user_pref("app.update.lastUpdateTime.browser-cleanup-thumbnails", 1709106799);
-user_pref("app.update.lastUpdateTime.services-settings-poll-changes", 1709056553);
-user_pref("app.update.lastUpdateTime.xpi-signature-verification", 1709056553);
+user_pref("app.update.lastUpdateTime.addon-background-update-timer", 1709222441);
+user_pref("app.update.lastUpdateTime.browser-cleanup-thumbnails", 1709222441);
+user_pref("app.update.lastUpdateTime.services-settings-poll-changes", 1709222441);
+user_pref("app.update.lastUpdateTime.xpi-signature-verification", 1709222441);
 user_pref("browser.bookmarks.editDialog.confirmationHintShowCount", 2);
 user_pref("browser.bookmarks.restore_default_bookmarks", false);
 user_pref("browser.contentblocking.category", "strict");
@@ -81,7 +81,7 @@ user_pref("dom.security.https_only_mode_ever_enabled", true);
 user_pref("extensions.activeThemeID", "default-theme@mozilla.org");
 user_pref("extensions.blocklist.pingCountVersion", -1);
 user_pref("extensions.databaseSchema", 35);
-user_pref("extensions.getAddons.cache.lastUpdate", 1709056553);
+user_pref("extensions.getAddons.cache.lastUpdate", 1709222442);
 user_pref("extensions.getAddons.databaseSchema", 6);
 user_pref("extensions.lastAppBuildId", "20240224121330");
 user_pref("extensions.lastAppVersion", "123.0-1");

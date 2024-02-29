@@ -84,7 +84,6 @@ local plugins = {
 		tag = "0.1.5",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope-fzy-native.nvim",
 			"debugloop/telescope-undo.nvim",
 		},
 		keys = {
@@ -97,47 +96,7 @@ local plugins = {
 		config = function()
 			local telescope = require("telescope")
 			telescope.setup({ defaults = { border = false }, extensions = { file_browser = { hijack_netrw = true } } })
-			telescope.load_extension("fzy_native")
 			require("telescope").load_extension("undo")
-		end,
-	},
-	{
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		keys = { "<A-o>", "<A-a>" },
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			local harpoon = require("harpoon")
-			harpoon:setup()
-			local conf = require("telescope.config").values
-			local function toggle_telescope(harpoon_files)
-				local file_paths = {}
-				for _, item in ipairs(harpoon_files.items) do
-					table.insert(file_paths, item.value)
-				end
-				require("telescope.pickers")
-					.new({}, {
-						prompt_title = "Harpoon",
-						finder = require("telescope.finders").new_table({
-							results = file_paths,
-						}),
-						previewer = conf.file_previewer({}),
-						sorter = conf.generic_sorter({}),
-					})
-					:find()
-			end
-
-            -- stylua: ignore
-            if true then
-                map("n", "<A-o>", function() toggle_telescope(harpoon:list()) end, { desc = "Open Harpoon Window" })
-                map("n", "<A-a>", function() harpoon:list():append() end, { desc = "Append Harpoon List" })
-                map("n", "<C-1>", function() harpoon:list():select(1) end, { desc = "Harpoon List #1" })
-                map("n", "<C-2>", function() harpoon:list():select(2) end, { desc = "Harpoon List #2" }) 
-                map("n", "<C-3>", function() harpoon:list():select(3) end, { desc = "Harpoon List #3" })
-                map("n", "<C-4>", function() harpoon:list():select(4) end, { desc = "Harpoon List #4" })
-                map("n", "<A-p>", function() harpoon:list():prev() end, {desc = "Prev Harpoon List" })
-                map("n", "<A-n>", function() harpoon:list():next() end, {desc = "Next Harpoon List" })
-            end
 		end,
 	},
 	{
@@ -233,19 +192,13 @@ local plugins = {
 		event = "UIEnter",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-            -- stylua: ignore
-            local files = { {"filename", symbols = {modified = "󱇧", readonly = "",unnamed = "󰲶", newfile = ""} } }
+	           -- stylua: ignore
+	           local files = { {"filename", symbols = {modified = "󱇧", readonly = "",unnamed = "󰲶", newfile = ""} } }
 			require("lualine").setup({
 				sections = { lualine_c = files, lualine_x = { "filetype" }, lualine_y = { "tabs" } },
 				options = { theme = "tokyonight", section_separators = { left = "", right = "" } },
 				extensions = { "fzf", "lazy", "neo-tree", "fzf", "toggleterm" },
 			})
-			for i = 1, 9 do
-                --stylua: ignore
-               map("n", "<A-" .. i .. ">", "<Cmd>LualineBuffersJump! " .. i .. "<CR>", { noremap = true, silent = true, desc = "Go to Buffer " .. i })
-			end
-            --stylua: ignore
-            map("n", "<A-0>", "<Cmd>LualineBuffersJump! $<CR>", { noremap = true, silent = true, desc = "Go to Last Buffer" })
 		end,
 	},
 	{
@@ -253,18 +206,6 @@ local plugins = {
 		event = "UIEnter",
 		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 		opts = { presets = { command_palette = true, lsp_doc_border = false, long_message_to_split = true } },
-	},
-	{
-		"folke/flash.nvim",
-        -- stylua: ignore
-        keys = {
-            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-            { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-            { "<a-s>", mode = {"n"}, function() require("flash").jump({pattern = vim.fn.expand("<cword>"), }) end, desc = "Flash Current Word"},
-        },
 	},
 	{
 		"codota/tabnine-nvim",
@@ -284,15 +225,31 @@ local plugins = {
 		opts = { window = { position = "right", width = 30 } },
 		keys = { { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle File Tree" } },
 	},
-    -- stylua: ignore
-    {
-        {"folke/tokyonight.nvim", lazy = false, priority = 1000},
-        {"echasnovski/mini.pairs" , event = "InsertEnter", config = function() require("mini.pairs").setup() end},
-        {"echasnovski/mini.animate", event = "UIEnter",  config = function() require("mini.animate").setup() end},
-        {"echasnovski/mini.comment", keys = "gc", config = function() require("mini.comment").setup() end},
-        {"folke/which-key.nvim", keys = { "<leader>", "c", "v", "g" }, opts = { layout = { align = "center" } } },
-		{"lukas-reineke/indent-blankline.nvim", event = "UIEnter", opts = { scope = { enabled = false } },  main = "ibl" },
-    },
+	{
+		"echasnovski/mini.nvim",
+		event = "BufEnter",
+		config = function()
+			require("mini.ai").setup({ n_lines = 500 })
+			require("mini.surround").setup()
+			require("mini.pairs").setup()
+			require("mini.comment").setup()
+			require("mini.animate").setup()
+		end,
+	},
+
+	{
+		"toppair/reach.nvim",
+		config = function()
+			require("reach").setup({
+				notifications = true,
+			})
+		end,
+		lazy = false,
+		keys = { { "`", "<cmd>ReachOpen buffers<CR>", desc = "Open Reach" } },
+	},
+	{ "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+	{ "folke/which-key.nvim", keys = { "<leader>", "c", "v", "g" }, opts = { layout = { align = "center" } } },
+	{ "lukas-reineke/indent-blankline.nvim", event = "UIEnter", opts = { scope = { enabled = false } }, main = "ibl" },
 }
 -- stylua: ignore
 require("lazy").setup({

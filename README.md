@@ -2,32 +2,11 @@
 
 This is my personal dotfiles configuration.
 
-## Dependencies:
+### Install:
 
-Make sure you have the following packages installed on your system before proceeding:
-
-- git
-- stow
-- fish
-- neovim
-- alacritty / kitty
-- hyprland
-- starship
-- rofi
-- waybar
-
-Assuming you are using an Arch based system and you have `yay` installed on your system,
-simply run:
+To Start, simply clone the repo using git:
 ```
-pacman -S Hyprland rofi fish kitty neovim vim starship waybar git stow 
-#essential tools
-pacman -S brightnessctl eza fd librewolf-bin hyprpicker lazygit neofetch pavucontrol ripgrep pipewire wl-clipboard zoxide 
+git clone https://github.com/SmallMing6675/dotfiles.git ~/dotfiles/
 ```
-
-To apply:
-
-```bash
-$ git clone https://github.com/SmallMing6675/Dotfiles
-$ cd dotfiles
-$ stow . # besure to backup your existing configuration before applying!
-```
+An install script is already provided inside the install/install.sh
+Note that the install script will only work with arch linux / arch based distros.

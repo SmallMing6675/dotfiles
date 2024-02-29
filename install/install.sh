@@ -39,7 +39,48 @@ fi
 
 
 echo -e "${CYAN}Installing essential packages...${NC}"
-sudo pacman -S --needed --noconfirm Hyprland rofi fish kitty neovim vim starship waybar git brightnessctl eza fd librewolf-bin hyprpicker lazygit neofetch pavucontrol ripgrep pipewire wl-clipboard zoxide
+packages = ( 
+git
+
+#terminal
+bash
+man-db
+fish 
+kitty
+neovim
+vim
+starship
+
+#hyprland
+hyprland
+hyprpicker
+swaybg 
+waybar-git
+waybar-mpris-git
+rofi
+brightnessctl
+librewolf-bin
+pavucontrol
+pipewire
+wl-clipboard
+grim
+slurp
+
+#terminal utilities
+eza
+fd
+neofetch
+lazygit
+ripgrep
+zoxide
+
+#fonts
+ttf-jetbrains-mono
+ttf-jetbrains-mono-nerd
+
+)
+
+yay  -S --needed --noconfirm "${packages[@]}"
 
 echo -e "${PURPLE}Updating Config...${NC}"
 cd ~/dotfiles/
