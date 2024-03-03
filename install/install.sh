@@ -1,3 +1,10 @@
+#=============================================
+# This scripts simply installs all the required packages
+# and stows all the config files in the ~/dotfiles directory
+# back to the home directory. 
+# Note that this script only works with arch org
+# arch based distro.
+#=============================================
 #!/bin/bash
 cd ~/dotfiles
 

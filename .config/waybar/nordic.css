@@ -1,6 +1,6 @@
-@define-color bg-h     #16161e;
-@define-color bg       #1a1b26;
-@define-color bg-s     #292e42;
+@define-color bg-h     #232a2d;
+@define-color bg       #141b1e;
+@define-color bg-s     #232a2d;
 @define-color bg1      #3C3836;
 @define-color bg2      #434C5E;
 @define-color bg3      #3C3836;
@@ -12,21 +12,12 @@
 @define-color fg3      #c0caf5;
 @define-color fg4      #c0caf5;
 
-@define-color red      #BF616A;
-@define-color green    #A3BE8C;
-@define-color yellow   #EBCB8B;
-@define-color blue     #7aa2f7;
-@define-color purple   #B48EAD;
-@define-color aqua     #8FBCBB;
-@define-color gray     #D4BE98;
+@define-color red      #e57474;
+@define-color green    #8ccf7e;
+@define-color yellow   #e5c76b;
+@define-color blue     #67b0e8;
+@define-color purple   #c47fd5;
+@define-color aqua     #6cbfbf;
+@define-color gray     #b3b9b8;
 @define-color orange   #D08770;
 
-@define-color red-dim      #BF616A;
-@define-color green-dim    #A3BE8C;
-@define-color yellow-dim   #EBCB8B;
-@define-color blue-dim     #5E81AC;
-@define-color purple-dim   #B48EAD;
-@define-color aqua-dim     #8FBCBB;
-@define-color gray-dim     #D4BE98;
-@define-color orange-dim   #D08770;
-@define-color orange-dim #E78A4E;
