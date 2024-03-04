@@ -1,4 +1,4 @@
-@import "nordic.css";
+@import "colors.css";
 
 /* --- GENERAL --- */
 * {
@@ -8,7 +8,7 @@
 }
 
 #waybar {
-  border-radius: 9px;
+  border-radius: 12px;
   border: 0px;
   background: @bg;
   opacity: 0.85;
@@ -49,7 +49,7 @@
 #workspaces button {
   color: @bg4;
   background-color: transparent;
-  padding: 3px 3px;
+  padding: 5px 5px;
   margin: 0.3rem 0;
   border: transparent;
   transition:

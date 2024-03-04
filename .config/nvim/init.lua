@@ -1,9 +1,9 @@
 vim.loader.enable()
 
 vim.g.mapleader = " "
-vim.g.loaded_perl_provider = 0
-vim.g.loaded_python3_provider = 0
-vim.g.loaded_ruby_provider = 0
+vim.g.matchparen_timeout = 20
+vim.g.matchparen_insert_timeout = 20
+vim.g.python3_host_prog = vim.loop.os_homedir() .. "/.virtualenvs/neovim/bin/python3"
 
 local map = vim.keymap.set
 
@@ -16,22 +16,28 @@ local options = {
 	relativenumber = true,
 	numberwidth = 4,
 	cursorline = true,
-	lazyredraw = false,
 	updatetime = 300,
-	timeoutlen = 500,
+	timeoutlen = 0,
 	ignorecase = true,
 	incsearch = true,
 	shadafile = "NONE",
 	wrap = false,
 	clipboard = "unnamedplus",
 	cmdheight = 0,
-	fillchars = "eob: ",
+	fillchars = {
+		eob = " ",
+	},
+	shell = "/bin/bash",
+	swapfile = false,
+	laststatus = 3,
 }
 
 for o, v in pairs(options) do
 	vim.opt[o] = v
 end
 ---------- keymaps ----------
+map("n", ";", ":")
+map("n", "<leader>/", "gcc", { desc = "Comment line" })
 map("n", "<leader>n", ":ene <BAR> startinsert <CR>", { desc = "New File" })
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
@@ -62,7 +68,8 @@ map("n", "<tab>n", "<cmd>tabnew<CR>", { desc = "Tab: New" })
 map("n", "<tab>j", "<cmd>tabnext<CR>", { desc = "Tab: Next" })
 map("n", "<tab>k", "<cmd>tabprevious<CR>", { desc = "Tab: Previous " })
 map("n", "<tab>x", "<cmd>tabclose<CR>", { desc = "Tab: Close " })
-
+map("n", "<leader>o", ':<C-u>call append(line("."), repeat([""], v:count1))<CR>', { desc = "Add line below" })
+map("n", "<leader>O", ':<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>', { desc = "Add line above" })
 map("n", "J", "<C-d>")
 map("n", "K", "<C-u>")
 
@@ -72,14 +79,29 @@ if not vim.loop.fs_stat(lazypath) then
   -- stylua: ignore
   vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
+
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 local plugins = {
 	"nathom/filetype.nvim",
 	{
-		"nvim-treesitter/nvim-treesitter",
+		"lewis6991/gitsigns.nvim",
 		event = "BufEnter",
-		build = ":TSUpdate",
+		opts = {
+			signs = {
+				add = { text = "│" },
+				change = { text = "│" },
+				delete = { text = "󰍵" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+				untracked = { text = "│" },
+			},
+		},
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		event = "VimEnter",
+		cmd = "TSUpdate",
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				highlight = { enable = true },
@@ -87,6 +109,7 @@ local plugins = {
 				ensure_installed = { "rust", "python", "c", "lua", "vim", "vimdoc", "query" },
 				auto_install = true,
 			})
+			vim.cmd("silent TSUpdate")
 		end,
 	},
 	{
@@ -97,15 +120,28 @@ local plugins = {
 			"debugloop/telescope-undo.nvim",
 		},
 		keys = {
-			{ "<a-u>", "<cmd>Telescope undo<cr>", desc = "undo history" },
-			{ "<a-f>", "<Cmd>Telescope find_files<CR>", desc = "Find: Files" },
-			{ "<a-r>", "<Cmd>Telescope oldfiles<CR>", desc = "Find: Recent Files" },
-			{ "<a-g>", "<Cmd>Telescope live_grep<CR>", desc = "Find: Grep" },
+			{ "<a-u>", "<cmd>Telescope undo<cr>", desc = "Undo History" },
+			{ "<a-f>", "<Cmd>Telescope find_files<CR>", desc = "Find Files" },
+			{ "<a-r>", "<Cmd>Telescope oldfiles<CR>", desc = "Find Recent Files" },
+			{ "<a-g>", "<Cmd>Telescope live_grep<CR>", desc = "Find Grep" },
+
+			{ "<leader>ff", "<cmd> Telescope find_files <CR>", desc = "Find files" },
+			{ "<leader>fw", "<cmd> Telescope live_grep <CR>", desc = "Live grep" },
+			{ "<leader>fb", "<cmd> Telescope buffers <CR>", desc = "Find buffers" },
+			{ "<leader>fh", "<cmd> Telescope help_tags <CR>", desc = "Help page" },
+			{ "<leader>fo", "<cmd> Telescope oldfiles <CR>", desc = "Find oldfiles" },
+			{ "<leader>fz", "<cmd> Telescope current_buffer_fuzzy_find <CR>", desc = "Find in current buffer" },
+			{ "<leader>fc", "<cmd> Telescope git_commits <CR>", desc = "Git commits" },
+			{ "<leader>fs", "<cmd> Telescope git_status <CR>", desc = "Git status" },
 		},
 		cmd = "Telescope",
 		config = function()
 			local telescope = require("telescope")
-			telescope.setup({ defaults = { border = true }, extensions = { file_browser = { hijack_netrw = true } } })
+			telescope.setup({
+				pickers = { find_files = { follow = true } },
+				defaults = { border = true },
+				extensions = { file_browser = { hijack_netrw = true } },
+			})
 			require("telescope").load_extension("undo")
 		end,
 	},
@@ -118,7 +154,7 @@ local plugins = {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPost", "BufNewFile" },
+		event = { "BufReadPre", "BufNewFile" },
 		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 		dependencies = { "williamboman/mason-lspconfig", "williamboman/mason.nvim" },
 		config = function()
@@ -134,7 +170,7 @@ local plugins = {
 	{
 		"hedyhli/outline.nvim",
 		cmd = { "Outline", "OutlineOpen" },
-		keys = { { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" } },
+		keys = { { "<leader>p", "<cmd>Outline<CR>", desc = "Toggle outline" } },
 		config = function()
 			require("outline").setup({
             -- stylua: ignore
@@ -185,10 +221,11 @@ local plugins = {
 					{ name = "luasnip", max_item_count = 5 },
 				},
 				window = {
-					completion = { border = "rounded" },
-					documentation = { border = "rounded" },
+					completion = { border = "shadow" },
+					documentation = { border = "shadow" },
 				},
 			})
+
 			cmp.setup.cmdline(
 				{ "/", "?" },
 				{ mapping = cmp.mapping.preset.cmdline(), sources = { { name = "buffer" } } }
@@ -197,6 +234,10 @@ local plugins = {
 				":",
 				{ mapping = cmp.mapping.preset.cmdline(), sources = cmp.config.sources({ { name = "cmdline" } }) }
 			)
+
+			vim.cmd("hi CmpNormal guibg=#1A2224")
+			vim.cmd("hi CmpItemAbbr guibg=none")
+			vim.cmd("hi CmpItemKind guibg=none")
 		end,
 	},
 
@@ -205,11 +246,20 @@ local plugins = {
 		event = "UIEnter",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-	           -- stylua: ignore
-	           local files = { {"filename", symbols = {modified = "󱇧", readonly = "",unnamed = "󰲶", newfile = ""} } }
+			local everblush = require("lualine.themes.everblush")
+			everblush.normal.c.bg = "#232a2d"
+			everblush.normal.b.bg = "#2d3437"
+
+	        -- stylua: ignore
+	        local files = { {"filename", symbols = {modified = "󱇧", readonly = "",unnamed = "󰲶", newfile = ""} } }
 			require("lualine").setup({
-				sections = { lualine_c = files, lualine_x = { "filetype" }, lualine_y = { "tabs" } },
-				options = { theme = "everblush", section_separators = { left = "", right = "" } },
+				sections = {
+					lualine_b = files,
+					lualine_c = { "diagnostics" },
+					lualine_x = { "filetype" },
+					lualine_y = { "tabs" },
+				},
+				options = { theme = everblush, section_separators = { left = "", right = "" } },
 				extensions = { "fzf", "lazy", "neo-tree", "fzf", "toggleterm" },
 			})
 		end,
@@ -244,22 +294,38 @@ local plugins = {
 	},
 	{
 		"Everblush/nvim",
-		name = "everblush",
 		lazy = false,
+		name = "everblush",
 		config = function()
 			vim.cmd.colorscheme("everblush")
 		end,
 	},
-	{ "folke/which-key.nvim", keys = { "<leader>", "c", "v", "g" }, opts = { layout = { align = "center" } } },
+	{
+		"folke/which-key.nvim",
+		keys = { "<leader>", "c", "v", "g" },
+		config = function()
+			local which_key = require("which-key")
+			which_key.setup({
+				window = {
+					border = "shadow",
+					position = "bottom",
+				},
+				layout = { align = "center" },
+			})
+			which_key.register({
+				["<leader>l"] = { name = "+LSP" },
+				["<leader>f"] = { name = "+Telescope" },
+			})
+		end,
+	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "UIEnter",
-		opts = { scope = { enabled = false }, indent = { highlight = "LineNr" } },
 		main = "ibl",
+		opts = { scope = { enabled = false }, indent = { highlight = "LineNr" } },
 	},
 	{
 		"folke/flash.nvim",
-		event = "VeryLazy",
 		opts = {},
         -- stylua: ignore
         keys = {
@@ -276,6 +342,7 @@ local plugins = {
 require("lazy").setup({
 	spec = plugins,
 	defaults = { lazy = true, version = false, config = true, event = "VeryLazy" },
+
 	performance = {
 		cache = { enabled = true },
 		rtp = { disabled_plugins = { "2html_plugin", "bugreport", "compiler", "ftplugin", "getscript", "getscriptPlugin", "gzip", "logipat", "matchit", "netrw", "netrwFileHandlers", "netrwPlugin", "netrwSettings", "optwin", "rplugin", "rrhelper", "spellfile_plugin", "synmenu", "syntax", "tar", "tarPlugin", "tohtml", "tutor", "vimball", "vimballPlugin", "zip", "zipPlugin", "editorconfig", "man", "health", "matchparen", "spellfile", "shada", }, },
@@ -297,10 +364,10 @@ autocmd("VimEnter", {
 })
 autocmd("UIEnter", {
 	callback = function()
-		vim.cmd("silent TSUpdate")
 		vim.cmd("hi LineNr guifg=#404749")
 		vim.cmd("hi CursorLineNr guifg=fg")
 		vim.cmd("hi CursorLine guibg=none")
+		vim.cmd("hi VertSplit guifg=#232A2D")
 		vim.cmd("hi TelescopeSelection guifg=#6cbfbf guibg=bg")
 	end,
 })

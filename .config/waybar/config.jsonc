@@ -3,9 +3,9 @@
   // --- GENERAL ---
   "layer": "top",
   "position": "top",
-  "margin-left": 12,
-  "margin-right": 12,
-  "margin-top": 12,
+  "margin-left": 18,
+  "margin-right": 18,
+  "margin-top": 18,
 
   // --- LEFT MODULES ---
   "modules-left": ["custom/menu", "hyprland/workspaces"],
