@@ -10,11 +10,9 @@ alias lt="eza --tree --level=3"
 alias l="eza -l"
 alias logout="loginctl terminate-session self"
 alias vim="nvim"
-alias v="nvim"
-alias nvim='nvim --startuptime /tmp/nvim-startuptime'
+alias nv='nvim'
 alias rm="rip"
 alias cat="bat"
-alias rrepl="evcxr"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias restore="$HOME/.local/share/Trash/files" #Trashed files directory
 alias back="trash-restore"
@@ -27,8 +25,9 @@ alias sudo="doas"
 alias suspend="systemctl suspend"
 alias cheat="navi"
 alias ff="fzf"
-
+alias py="python"
 alias cff="cd (fd -H --type directory | ff)"
+alias man='batman'
 
 set -Ux EDITOR nvim
 set -Ux VISUAL nvim

@@ -13,12 +13,12 @@
   "hyprland/window": {
     "format": "{}",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1"
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
   },
 
   "custom/menu": {
     "format": "",
-    "on-click": "~/.config/hypr/scripts/dashboard"
+    "on-click": "~/.config/hypr/scripts/dashboard",
   },
 
   "hyprland/workspaces": {
@@ -29,7 +29,7 @@
     "format-icons": {
       "active": "",
       "empty": "",
-      "default": ""
+      "default": "",
     },
   },
 
@@ -38,7 +38,7 @@
 
   "clock": {
     "interval": 1,
-    "format": " {:%H:%M:%S %d %b}"
+    "format": " {:%H:%M:%S %d %b}",
   },
 
   // --- RIGHT MODULES ---

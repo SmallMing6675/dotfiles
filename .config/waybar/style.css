@@ -5,11 +5,10 @@
   font-family: JetBrainsMono Nerd Font;
   font-weight: bold;
   font-size: 18px;
+  border-radius: 12px;
 }
 
 #waybar {
-  border-radius: 12px;
-  border: 0px;
   background: @bg;
   opacity: 0.85;
 }
@@ -44,7 +43,6 @@
 #workspaces {
   padding: 0rem 0.5rem;
 }
-
 
 #workspaces button {
   color: @bg4;

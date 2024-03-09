@@ -9,9 +9,11 @@
   "flash.nvim": { "branch": "main", "commit": "48817af25f51c0590653bbc290866e4890fe1cbe" },
   "gitsigns.nvim": { "branch": "main", "commit": "2c2463dbd82eddd7dbab881c3a62cfbfbe3c67ae" },
   "indent-blankline.nvim": { "branch": "master", "commit": "821a7acd88587d966f7e464b0b3031dfe7f5680c" },
-  "lazy.nvim": { "branch": "main", "commit": "aedcd79811d491b60d0a6577a9c1701063c2a609" },
-  "lualine.nvim": { "branch": "master", "commit": "7d131a8d3ba5016229e8a1d08bf8782acea98852" },
+  "lazy.nvim": { "branch": "main", "commit": "28126922c9b54e35a192ac415788f202c3944c9f" },
+  "lualine-lsp-progress": { "branch": "master", "commit": "56842d097245a08d77912edf5f2a69ba29f275d7" },
+  "lualine.nvim": { "branch": "master", "commit": "8b56462bfb746760465264de41b4907310f113ec" },
   "mason-lspconfig": { "branch": "main", "commit": "21d33d69a81f6351e5a5f49078b2e4f0075c8e73" },
+  "mason-tool-installer.nvim": { "branch": "main", "commit": "1212fb6082b7177dde17ea65e429e027835aeb40" },
   "mason.nvim": { "branch": "main", "commit": "3b5068f0fc565f337d67a2d315d935f574848ee7" },
   "mini.nvim": { "branch": "main", "commit": "70d8a16399ca6df759d20bea302d6dfd710a1df8" },
   "neo-tree.nvim": { "branch": "main", "commit": "459c60317cc1d251f6eb3b6f010d015d5d24b806" },
@@ -28,6 +30,5 @@
   "reach.nvim": { "branch": "master", "commit": "f86830357941cca8a31f19601153087ea9524d22" },
   "telescope-undo.nvim": { "branch": "main", "commit": "d3afc1c105535a90caec092ce27a113f77ba7b84" },
   "telescope.nvim": { "branch": "master", "commit": "d90956833d7c27e73c621a61f20b29fdb7122709" },
-  "ui": { "branch": "v2.0", "commit": "7b3225264af17a9e0aff0b4fd2a0fac90b73db53" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }
