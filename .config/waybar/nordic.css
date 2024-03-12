@@ -1,9 +1,10 @@
-@define-color bg-h     #232a2d;
-@define-color bg       #141b1e;
-@define-color bg-s     #232a2d;
-@define-color bg1      #3C3836;
+@define-color bg-h     #222630;
+@define-color bg       #191d24;
+@define-color bg-s     #2E3440;
+
+@define-color bg1      #3B4252;
 @define-color bg2      #434C5E;
-@define-color bg3      #3C3836;
+@define-color bg3      #4C566A;
 @define-color bg4      #60728A;
 
 @define-color fg       #c0caf5;
@@ -20,4 +21,3 @@
 @define-color aqua     #6cbfbf;
 @define-color gray     #b3b9b8;
 @define-color orange   #D08770;
-

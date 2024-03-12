@@ -1,16 +1,12 @@
-@import "colors.css";
+@import "nordic.css";
 
 /* --- GENERAL --- */
 * {
   font-family: JetBrainsMono Nerd Font;
   font-weight: bold;
-  font-size: 18px;
-  border-radius: 12px;
-}
 
-#waybar {
-  background: @bg;
-  opacity: 0.85;
+  background-color: transparent;
+  font-size: 18px;
 }
 
 #window,
@@ -30,33 +26,41 @@
 #custom-menu,
 #custom-lock,
 #custom-power {
-  padding: 0.7rem 0.7rem;
+  padding: 0.5rem 0.5rem;
+  color: @yellow;
+
+  background-color: @bg-h;
 }
 
 /* --- LEFT MODULES --- */
 
+#custom-menu,
+#workspaces {
+  background-color: @bg-h;
+}
 #custom-menu {
   color: @yellow;
-  padding-left: 1.6rem;
+
+  padding-left: 1.2rem;
+
+  border-radius: 3rem 0 0 3rem;
 }
 
 #workspaces {
   padding: 0rem 0.5rem;
+  border-radius: 0 2rem 2rem 0;
 }
 
 #workspaces button {
   color: @bg4;
-  background-color: transparent;
-  padding: 5px 5px;
-  margin: 0.3rem 0;
-  border: transparent;
+  padding: 5px;
   transition:
     color 0.2s,
     background-color 0.2s;
 }
 
 #workspaces button.empty {
-  color: @bg2;
+  color: @bg1;
 }
 
 #workspaces button.active {
@@ -70,6 +74,9 @@
 /* --- CENTER MODULES --- */
 
 #clock {
+  border-radius: 24px;
+  padding-left: 12px;
+  padding-right: 12px;
   color: @yellow;
 }
 
@@ -77,8 +84,8 @@
 
 #network {
   color: @green;
-  padding-left: 1.6rem;
-  /* margin-left: 1rem; */
+  border-radius: 2rem 0 0 2rem;
+  padding-left: 1.2rem;
 }
 
 #idle_inhibitor.deactivated {
@@ -111,7 +118,6 @@
 
 #battery {
   color: @green;
-  background-color: @bg;
 }
 
 #battery.charging {
@@ -122,31 +128,12 @@
   color: @red;
 }
 
-#custom-updates {
-  color: @red;
-}
-
-#custom-dunst {
-  color: @aqua;
-}
-
 #bluetooth {
   color: @aqua;
 }
 
-/*---*/
-
-#tray {
-  background-color: @bg;
-
-  padding-left: 0.8rem;
-  padding-right: 0.8rem;
-  /* margin-left: 1rem; */
-}
-
-/* --- */
-
 #custom-power {
-  padding-right: 1.6rem;
+  padding-right: 1.2rem;
+  border-radius: 0 2rem 2rem 0;
   color: @red;
 }

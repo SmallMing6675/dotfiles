@@ -1,14 +1,16 @@
 set fish_greeting
 eval "$(zoxide init fish --cmd cd)"
 eval "$(starship init fish)"
+navi widget fish | source
 
 alias lgit="lazygit"
 alias cls="clear"
 alias copy="wl-copy"
-alias ls="eza"
-alias lt="eza --tree --level=3"
-alias l="eza -l"
+alias ls="eza --icons=auto"
+alias lt="eza --tree --level=3 --icons=auto"
+alias l="eza -l --icons=auto"
 alias logout="loginctl terminate-session self"
+alias v='neovide'
 alias vim="nvim"
 alias nv='nvim'
 alias rm="rip"
@@ -78,3 +80,4 @@ end
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+export BAT_THEME="Nord"

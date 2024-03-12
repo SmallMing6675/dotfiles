@@ -22,7 +22,19 @@
   },
 
   "hyprland/workspaces": {
-    "format": "{name}",
+    "format": "{icon}",
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": [],
+      "10": [],
+    },
     "show-special": true,
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
@@ -48,6 +60,7 @@
     "pulseaudio",
     "cpu",
     "memory",
+    "temperature",
     "custom/power",
   ],
 
@@ -69,8 +82,8 @@
     },
   },
   "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon} 󰂯",
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}% 󰂯",
     "format-muted": "",
     "format-icons": {
       "headphone": "󰋋",
@@ -85,25 +98,25 @@
   },
   "cpu": {
     "interval": 10,
-    "format": "{usage}%  ",
+    "format": " {usage}%",
     "on-click": "htop",
   },
 
   "memory": {
     "interval": 10,
-    "format": "{}%  ",
+    "format": " {}%",
     "on-click": "htop",
   },
 
   "temperature": {
     "interval": 30,
     "critical-threshold": 80,
-    "format": "{temperatureC}°C ",
+    "format": " {temperatureC}°C",
     "on-click": "htop",
   },
 
   "backlight": {
-    "format": "{icon} {percent}%",
+    "format": "{percent}% {icon}",
     "format-icons": ["", "", "", "", "", "", "", "", ""],
   },
 
@@ -135,8 +148,8 @@
       "warning": 30,
       "critical": 15,
     },
-    "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
     "format-icons": ["󰂎", "󰁻", "󰁼", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
   },
 
