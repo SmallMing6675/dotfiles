@@ -1,3 +1,0 @@
-#!/bin/bash
-
-~/.config/rofi/powermenu/type-2/powermenu.sh || pkill rofi

@@ -1,11 +1,11 @@
+#!/bin/bash
 #=============================================
 # This scripts simply installs all the required packages
 # and stows all the config files in the ~/dotfiles directory
 # back to the home directory. 
-# Note that this script only works with arch org
-# arch based distro.
+# Note that this script only works with arch or
+# arch based distros.
 #=============================================
-#!/bin/bash
 cd ~/dotfiles
 
 BLACK='\033[0;30m'
@@ -46,48 +46,45 @@ fi
 
 
 echo -e "${CYAN}Installing essential packages...${NC}"
-packages = ( 
-git
-
-#terminal
-bash
-man-db
-fish 
-kitty
-neovim
-vim
-starship
-
+packages=(\
+#essential packages
+\
+git \
+bash \
+man-db \
+fish \
+kitty \
+neovim \
+vim \
+starship \
+\
 #hyprland
-hyprland
-hyprpicker
-swaybg 
-waybar-git
-waybar-mpris-git
-rofi
-brightnessctl
-librewolf-bin
-pavucontrol
-pipewire
-wl-clipboard
-grim
-slurp
-
-#terminal utilities
-eza
-fd
-neofetch
-lazygit
-ripgrep
-zoxide
-
+hyprland \
+hyprpicker \
+swaybg \
+waybar-git \
+rofi \
+brightnessctl \
+librewolf-bin \
+pavucontrol \
+pipewire \
+wl-clipboard \
+grim \
+slurp \
+\
+#terminal utils
+eza \
+fd \
+neofetch \
+lazygit \
+ripgrep \
+zoxide \
+\
 #fonts
-ttf-jetbrains-mono
-ttf-jetbrains-mono-nerd
+ttf-jetbrains-mono \
+ttf-jetbrains-mono-nerd)
 
-)
-
-yay  -S --needed --noconfirm "${packages[@]}"
+yay -S --needed --noconfirm "${packages[@]}"
 
 echo -e "${PURPLE}Updating Config...${NC}"
 cd ~/dotfiles/

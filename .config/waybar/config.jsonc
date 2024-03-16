@@ -3,9 +3,9 @@
   // --- GENERAL ---
   "layer": "top",
   "position": "top",
-  "margin-left": 18,
-  "margin-right": 18,
-  "margin-top": 18,
+  "margin-left": 12,
+  "margin-right": 12,
+  "margin-top": 12,
 
   // --- LEFT MODULES ---
   "modules-left": ["custom/menu", "hyprland/workspaces"],
@@ -84,7 +84,7 @@
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-bluetooth": "{icon} {volume}% 󰂯",
-    "format-muted": "",
+    "format-muted": "󰝟",
     "format-icons": {
       "headphone": "󰋋",
       "headset": "󰋋",

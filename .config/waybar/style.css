@@ -26,9 +26,8 @@
 #custom-menu,
 #custom-lock,
 #custom-power {
-  padding: 0.5rem 0.5rem;
+  padding: 0.3rem 0.75rem;
   color: @yellow;
-
   background-color: @bg-h;
 }
 
@@ -40,27 +39,27 @@
 }
 #custom-menu {
   color: @yellow;
-
   padding-left: 1.2rem;
-
-  border-radius: 3rem 0 0 3rem;
+  border-radius: 12px 0 0 12px;
 }
 
 #workspaces {
-  padding: 0rem 0.5rem;
-  border-radius: 0 2rem 2rem 0;
+  padding: 0rem 0.3rem;
+  padding-right: 0.8rem;
+
+  border-radius: 0 12px 12px 0;
 }
 
 #workspaces button {
-  color: @bg4;
-  padding: 5px;
+  color: #859289;
+  padding: 1px;
   transition:
     color 0.2s,
     background-color 0.2s;
 }
 
 #workspaces button.empty {
-  color: @bg1;
+  color: @bg4;
 }
 
 #workspaces button.active {
@@ -74,7 +73,7 @@
 /* --- CENTER MODULES --- */
 
 #clock {
-  border-radius: 24px;
+  border-radius: 12px;
   padding-left: 12px;
   padding-right: 12px;
   color: @yellow;
@@ -84,7 +83,8 @@
 
 #network {
   color: @green;
-  border-radius: 2rem 0 0 2rem;
+
+  border-radius: 12px 0 0 12px;
   padding-left: 1.2rem;
 }
 
@@ -134,6 +134,6 @@
 
 #custom-power {
   padding-right: 1.2rem;
-  border-radius: 0 2rem 2rem 0;
+  border-radius: 0 12px 12px 0;
   color: @red;
 }

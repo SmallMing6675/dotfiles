@@ -8,7 +8,7 @@ local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
 local opt = vim.opt
 
------------- Configuration for neovim itself -------------
+------------ Configuration -------------
 opt.expandtab = true
 opt.tabstop = 4
 opt.shiftwidth = 4
@@ -19,13 +19,12 @@ opt.updatetime = 300
 opt.timeoutlen = 0
 opt.shadafile = "NONE"
 opt.clipboard = "unnamedplus"
-opt.fillchars = { eob = " " }
 opt.showtabline = 0
+opt.ch = 0
 opt.scrolloff = 8
 opt.wrap = false
 opt.laststatus = 3
 opt.shell = "/bin/bash"
-opt.swapfile = false -- disables swap file, remove this line if you don't want this
 
 ---------- keymaps ----------
 map({ "n", "v", "i" }, "Q", "<Nop>")
@@ -75,11 +74,6 @@ autocmd("BufWritePre", {
 		vim.cmd.Neoformat()
 	end,
 })
-autocmd("UIEnter", {
-	callback = function()
-		vim.cmd("hi MiniFilesBorder guifg=bg")
-	end,
-})
 autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 100 })
@@ -113,36 +107,37 @@ local plugins = {
 		opts = {
 			terminals = {
 				shell = "fish",
-				type_opts = { float = { row = 0.2, width = 0.6, col = 0.2, height = 0.6 } },
+				type_opts = { float = { row = 0.2, width = 0.6, col = 0.2, height = 0.6, border = "none" } },
 			},
 		},
 	},
+
+	{
+		"neanias/everforest-nvim",
+		event = "UIEnter",
+		version = false,
+		lazy = false,
+		config = function()
+			require("everforest").setup({
+				background = "hard",
+				ui_contrast = "low",
+				diagnostic_text_highlight = true,
+				show_eob = false,
+			})
+			require("everforest").load()
+		end,
+	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		dependencies = { "AlexvZyl/nordic.nvim" },
 		event = "UIEnter",
 		main = "ibl",
 		opts = { scope = { enabled = false } },
 	},
 	{
-		"AlexvZyl/nordic.nvim",
-		event = "UIEnter",
-		config = function()
-			vim.cmd.colorscheme("nordic")
-		end,
-	},
-	{
-
 		"nvim-lualine/lualine.nvim",
 		event = "UIEnter",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-			"arkav/lualine-lsp-progress",
-		},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			local colors = require("nordic.colors")
-			local text_hl = { fg = colors.gray5, bg = colors.black0 }
-
 			require("lualine").setup({
 				sections = {
 					lualine_a = {
@@ -157,7 +152,6 @@ local plugins = {
 						{ "diff", symbols = { added = " ", modified = " ", removed = " " } },
 					},
 					lualine_y = {
-						{ "lsp_progress", display_components = { "lsp_client_name", { "title", "percentage" } } },
 						{
 							"diagnostics",
 							symbols = { error = " ", warn = " ", info = " ", hint = "󱤅 ", other = "󰠠 " },
@@ -174,13 +168,12 @@ local plugins = {
 							end,
 							padding = 0,
 							icon = "  ",
-							color = text_hl,
 						},
 					},
 					lualine_z = { { "tabs", padding = 1.5, symbols = { modified = " 󱇧" } } },
 				},
 				options = {
-					theme = "nordic",
+					theme = "everforest",
 
 					section_separators = { left = "", right = "" },
 					component_separators = { left = "", right = "" },
@@ -188,7 +181,6 @@ local plugins = {
 			})
 		end,
 	},
-	"nathom/filetype.nvim",
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufReadPost",
@@ -205,46 +197,47 @@ local plugins = {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				highlight = { enable = true },
 				indent = { enable = true },
 				ensure_installed = { "rust", "python", "c", "lua", "vim", "vimdoc", "query" },
-				auto_install = true,
 			})
 
 			vim.cmd("silent TSUpdate")
 		end,
 	},
 	{
+		"NvChad/nvim-colorizer.lua",
+		event = { "BufReadPost", "BufNewFile" },
+		cmd = {
+			"ColorizerToggle",
+			"ColorizerAttachToBuffer",
+			"ColorizerDetachFromBuffer",
+			"ColorizerReloadAllBuffers",
+		},
+		opts = { user_default_options = { names = false } },
+	},
+	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"debugloop/telescope-undo.nvim",
-			"nvim-telescope/telescope-ui-select.nvim",
-		},
+		dependencies = { "nvim-lua/plenary.nvim" },
 		keys = {
-			{ "<a-u>", "<cmd>Telescope undo<cr>", desc = "Undo History" },
 			{ "<a-f>", "<Cmd>Telescope find_files<CR>", desc = "Find Files" },
 			{ "<a-r>", "<Cmd>Telescope oldfiles<CR>", desc = "Find Recent Files" },
 			{ "<a-g>", "<Cmd>Telescope live_grep<CR>", desc = "Find Grep" },
 			{ "<a-b>", "<Cmd>Telescope buffers<CR>", desc = "Find Buffers" },
 		},
 		cmd = "Telescope",
-		config = function()
-			local telescope = require("telescope")
-			telescope.setup({
-				pickers = { find_files = { follow = true } },
-				defaults = { border = false },
-				extensions = {
-					file_browser = { hijack_netrw = true },
-					ui_select = { require("telescope.themes").get_dropdown({}) },
-				},
-			})
-			require("telescope").load_extension("ui-select")
-			require("telescope").load_extension("undo")
-		end,
+		opts = {
+			pickers = { find_files = { follow = true } },
+			defaults = { border = false },
+			extensions = {
+				file_browser = { hijack_netrw = true },
+			},
+		},
 	},
 	{
 		"sbdchd/neoformat",
@@ -255,7 +248,7 @@ local plugins = {
 	},
 	{
 		"neovim/nvim-lspconfig",
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufNewFile" },
 		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 		dependencies = {
 			"williamboman/mason-lspconfig",
@@ -271,18 +264,6 @@ local plugins = {
 				function(server_name)
 					require("lspconfig")[server_name].setup({})
 				end,
-			})
-		end,
-	},
-
-	{
-		"hedyhli/outline.nvim",
-		cmd = { "Outline", "OutlineOpen" },
-		keys = { { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" } },
-		config = function()
-			require("outline").setup({
-                -- stylua: ignore
-                symbols = { icons = { File = { icon = "󰈙", hl = "Identifier" }, Module = { icon = "󰆧", hl = "Include" }, Namespace = { icon = "󰅪", hl = "Include" }, Package = { icon = "󰏗", hl = "Include" }, Class = { icon = "󰠱", hl = "Type" }, Method = { icon = "󰊕", hl = "Function" }, Property = { icon = "󰜢", hl = "Identifier" }, Field = { icon = "󰇽", hl = "Identifier" }, Constructor = { icon = "", hl = "Special" }, Enum = { icon = "", hl = "Type" }, Interface = { icon = "", hl = "Type" }, Function = { icon = "󰊕", hl = "Function" }, Variable = { icon = "", hl = "Constant" }, Constant = { icon = "", hl = "Constant" }, String = { icon = "", hl = "String" }, Number = { icon = "#", hl = "Number" }, Boolean = { icon = "⊨", hl = "Boolean" }, Array = { icon = "󰅪", hl = "Constant" }, Object = { icon = "⦿", hl = "Type" }, Key = { icon = "", hl = "Type" }, Null = { icon = "󰟢", hl = "Type" }, EnumMember = { icon = "", hl = "Identifier" }, Struct = { icon = "", hl = "Structure" }, Event = { icon = "", hl = "Type" }, Operator = { icon = "+", hl = "Identifier" }, TypeParameter = { icon = "󰅲", hl = "Identifier" }, Component = { icon = "󰅴", hl = "Function" }, Fragment = { icon = "󰅴", hl = "Constant" }, TypeAlias = { icon = "", hl = "Type" }, Parameter = { icon = "", hl = "Identifier" }, StaticMethod = { icon = "", hl = "Function" }, Macro = { icon = "", hl = "Function" } } },
 			})
 		end,
 	},
@@ -336,17 +317,13 @@ local plugins = {
 		end,
 	},
 	{
-		"folke/noice.nvim",
+		"stevearc/dressing.nvim",
 		event = "UIEnter",
-		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
-		opts = { presets = { command_palette = true, lsp_doc_border = false, long_message_to_split = true } },
-	},
-	{
-		"folke/todo-comments.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {},
 	},
 	{
 		"echasnovski/mini.nvim",
+		event = "VimEnter",
 		keys = {
 			{
 				"<leader>e",
@@ -364,6 +341,7 @@ local plugins = {
 				require("mini.animate").setup()
 			end
 			require("mini.files").setup({ mappings = { close = "<esc>", synchronize = " " } })
+			vim.cmd("hi MiniFilesBorder guibg=#374145 guifg=#374145 ")
 		end,
 	},
 	{
@@ -372,11 +350,6 @@ local plugins = {
 		config = function()
 			require("nvim-surround").setup({ indent_lines = false })
 		end,
-	},
-	{
-		"toppair/reach.nvim",
-		opts = { notifications = true },
-		keys = { { "`", "<cmd>ReachOpen buffers<CR>", desc = "Open Reach" } },
 	},
 
 	{
@@ -387,6 +360,19 @@ local plugins = {
 			which_key.setup({ window = { border = "shadow", position = "bottom" }, layout = { align = "center" } })
 			which_key.register({ ["<leader>l"] = { name = "+LSP" }, ["<leader>f"] = { name = "+Telescope" } })
 		end,
+	},
+	{
+		"folke/noice.nvim",
+		event = "UIEnter",
+		opts = {
+			cmdline = {
+				enabled = true,
+			},
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
 	},
 	{
 		"folke/flash.nvim",
@@ -423,10 +409,10 @@ if vim.g.neovide then
 	vim.o.guifont = "JetBrainsMono Nerd Font:h16"
 
 	vim.g.neovide_scale_factor = 1
-	vim.g.neovide_padding_top = 3
-	vim.g.neovide_padding_bottom = 3
-	vim.g.neovide_padding_right = 3
-	vim.g.neovide_padding_left = 3
+	vim.g.neovide_padding_top = 5
+	vim.g.neovide_padding_bottom = 4
+	vim.g.neovide_padding_right = 15
+	vim.g.neovide_padding_left = 15
 
 	vim.g.neovide_hide_mouse_when_typing = true
 	vim.g.neovide_cursor_animate_command_line = true

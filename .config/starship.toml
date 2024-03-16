@@ -1,6 +1,7 @@
 
 format = """
 $directory\
+$python\
 $git_branch\
 $character\
 """
@@ -19,6 +20,9 @@ disabled = true
 success_symbol = "[❯](bold green)" 
 error_symbol = "[❯](bold red)"
 
+[python]
+symbol = ' '
+format = '[${symbol}${pyenv_prefix}$virtualenv]($style) '
 
 [sudo]
 format = "[$symbol]($style)"
@@ -26,22 +30,8 @@ style = "bold yellow"
 symbol = " "
 disabled = false
 
-
-# Setting time on the prompt
-
-[time]
-disabled = false
-format = '[$time]($style)'
-time_format = "%H:%M"
-#utc_time_offset = "-5"
-time_range = "00:00:00-24:00:00"
-use_12hr = false
-style = "yellow"
-#time = 10:03:16
-
 [cmd_duration]
-min_time = 500
-format = "[$duration](orange)"
+disabled = true
 
 [hostname]
 ssh_only = false
