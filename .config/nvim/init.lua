@@ -94,6 +94,21 @@ autocmd("LspAttach", {
 ---------- plugins ----------
 local plugins = {
 	{
+		"neanias/everforest-nvim",
+		version = false,
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("everforest").setup({
+				show_eob = false,
+
+				float_style = "dim",
+			})
+
+			require("everforest").load()
+		end,
+	},
+	{
 		"NvChad/nvterm",
 		keys = {
 			{
@@ -111,27 +126,17 @@ local plugins = {
 			},
 		},
 	},
-
-	{
-		"neanias/everforest-nvim",
-		event = "UIEnter",
-		version = false,
-		lazy = false,
-		config = function()
-			require("everforest").setup({
-				background = "hard",
-				ui_contrast = "low",
-				diagnostic_text_highlight = true,
-				show_eob = false,
-			})
-			require("everforest").load()
-		end,
-	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "UIEnter",
 		main = "ibl",
-		opts = { scope = { enabled = false } },
+		config = function()
+			local highlight = { "LineNr" }
+			require("ibl").setup({
+				indent = { highlight = highlight },
+				scope = { enabled = false },
+			})
+		end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -149,7 +154,6 @@ local plugins = {
 					},
 					lualine_x = {
 						{ "branch", icon = "󰊤" },
-						{ "diff", symbols = { added = " ", modified = " ", removed = " " } },
 					},
 					lualine_y = {
 						{
@@ -167,7 +171,7 @@ local plugins = {
 								return vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
 							end,
 							padding = 0,
-							icon = "  ",
+							icon = " ",
 						},
 					},
 					lualine_z = { { "tabs", padding = 1.5, symbols = { modified = " 󱇧" } } },
@@ -324,15 +328,6 @@ local plugins = {
 	{
 		"echasnovski/mini.nvim",
 		event = "VimEnter",
-		keys = {
-			{
-				"<leader>e",
-				function()
-					require("mini.files").open()
-				end,
-				desc = "Open File Explorer",
-			},
-		},
 		config = function()
 			require("mini.ai").setup({ n_lines = 500 })
 			require("mini.pairs").setup()
@@ -340,8 +335,6 @@ local plugins = {
 			if not vim.g.neovide then
 				require("mini.animate").setup()
 			end
-			require("mini.files").setup({ mappings = { close = "<esc>", synchronize = " " } })
-			vim.cmd("hi MiniFilesBorder guibg=#374145 guifg=#374145 ")
 		end,
 	},
 	{
@@ -364,15 +357,8 @@ local plugins = {
 	{
 		"folke/noice.nvim",
 		event = "UIEnter",
-		opts = {
-			cmdline = {
-				enabled = true,
-			},
-		},
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
+		opts = { cmdline = { enabled = true } },
+		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 	},
 	{
 		"folke/flash.nvim",

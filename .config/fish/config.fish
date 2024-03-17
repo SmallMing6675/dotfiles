@@ -43,6 +43,7 @@ set -gx FZF_DEFAULT_OPTS "\
 
 fish_add_path /home/user/.cargo/bin
 fish_add_path /home/user/.local/bin
+fish_add_path /home/user/go/bin
 
 function bind_bang
     switch (commandline -t)[-1]
@@ -68,6 +69,9 @@ function fish_user_key_bindings
     bind '$' bind_dollar
 end
 
+function lk
+    set loc (walk $argv); and cd $loc
+end
 
 thefuck --alias | source
 if status is-interactive
