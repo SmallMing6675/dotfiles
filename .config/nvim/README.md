@@ -27,13 +27,14 @@ A very fast lua based configuration that locates within a single file and is jus
 - [mini.ai](https://github.com/echasnovski/mini.ai)
 - [mini.comment](https://github.com/echasnovski/mini.comment)
 
-## Benefits 
+## Benefits
 
-### Speed   
+### Speed
+
 This configuration is made with lazy loading in mind and the choice of plugins allows it to be faster then other neovim configs.
 
-
 My Neovim Config;
+
 ```
 Measured: 100 times
 
@@ -43,6 +44,7 @@ Total Min:     5.058000 msec
 ```
 
 Lazyvim:
+
 ```
 Measured: 100 times
 
@@ -52,6 +54,7 @@ Total Min:     12.615000 msec
 ```
 
 Lunarvim:
+
 ```
 Measured: 100 times
 
@@ -61,6 +64,7 @@ Total Min:     35.332000 msec
 ```
 
 NvChad:
+
 ```
 Measured: 100 times
 
@@ -70,30 +74,36 @@ Total Min:     8.980000 msec
 ```
 
 ### Simplicity
+
 This config is just over 300 lines long is contained within a single file.
 Making it easier to expand upon to make your own config.
-
 
 ## Setup configuration
 
 ### Prerequisites
-To use this configuration, you will need:
- - git 
- - [Neovim 0.9 or above](https://neovim.io)
- - [ripgrep(Used for telescope)](https://github.com/BurntSushi/ripgrep)
 
-### Download 
+To use this configuration, you will need:
+
+- git
+- [Neovim 0.9 or above](https://neovim.io)
+- [ripgrep(Used for telescope)](https://github.com/BurntSushi/ripgrep)
+
+### Download
 
 To start, simply clone the repo into your neovim config:
-``` bash
+
+```bash
 $ git clone https://github.com/SmallMing6675/nvim.git ~/.config/ #change this to the place for your own neovim config
 ```
-after cloning the repo, run `nvim` in your terminal to startup neovim. 
+
+after cloning the repo, run `nvim` in your terminal to startup neovim.
 This will install lazy, the plugins required and some LSP servers.
 
 ### Install LSP servers, formatters and linters
+
 running `:Mason` allows you to install anything you want, this is a couple of examples I usually install:
- - clangd (C/C++)
- - rust-analyzer (Rust)
- - stylua (Lua)
- - autoflake (Python)
+
+- clangd (C/C++)
+- rust-analyzer (Rust)
+- stylua (Lua)
+- autoflake (Python)

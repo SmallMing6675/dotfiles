@@ -109,6 +109,30 @@ local plugins = {
 		end,
 	},
 	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+		opts = {
+			indent = {
+				indent_size = 4,
+			},
+			window = {
+				position = "right",
+			},
+		},
+		keys = {
+			{
+				"<leader>e",
+				"<Cmd>Neotree toggle<CR>",
+				desc = "Toggle File Tree",
+			},
+		},
+	},
+	{
 		"NvChad/nvterm",
 		keys = {
 			{
@@ -392,7 +416,7 @@ require("lazy").setup({
 })
 
 if vim.g.neovide then
-	vim.o.guifont = "JetBrainsMono Nerd Font:h16"
+	vim.o.guifont = "JetBrainsMono Nerd Font:h14"
 
 	vim.g.neovide_scale_factor = 1
 	vim.g.neovide_padding_top = 5

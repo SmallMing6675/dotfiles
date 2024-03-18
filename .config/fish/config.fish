@@ -2,7 +2,6 @@ set fish_greeting
 
 eval "$(zoxide init fish --cmd cd)"
 eval "$(starship init fish)"
-navi widget fish | source
 
 alias lgit="lazygit"
 alias cls="clear"
@@ -73,7 +72,6 @@ function lk
     set loc (walk $argv); and cd $loc
 end
 
-thefuck --alias | source
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end

@@ -56,6 +56,7 @@ fish \
 kitty \
 neovim \
 vim \
+neovide \
 starship \
 \
 #hyprland
@@ -67,10 +68,11 @@ rofi \
 brightnessctl \
 librewolf-bin \
 pavucontrol \
-pipewire \
+pulseaudio \
 wl-clipboard \
 grim \
 slurp \
+librewolf \
 \
 #terminal utils
 eza \
