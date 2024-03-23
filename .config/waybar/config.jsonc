@@ -2,10 +2,10 @@
 {
   // --- GENERAL ---
   "layer": "top",
-  "position": "top",
+  "position": "left",
   "margin-left": 12,
-  "margin-right": 12,
   "margin-top": 12,
+  "margin-bottom": 12,
 
   // --- LEFT MODULES ---
   "modules-left": ["custom/menu", "hyprland/workspaces"],
@@ -18,12 +18,14 @@
 
   "custom/menu": {
     "format": "",
+    "rotate": 90,
     "on-click": "~/.config/hypr/scripts/dashboard",
   },
 
   "hyprland/workspaces": {
-    "format": "{icon}",
+    "format": "{icon} ",
     "persistent-workspaces": {
+      "rotate": 180,
       "1": [],
       "2": [],
       "3": [],
@@ -50,7 +52,7 @@
 
   "clock": {
     "interval": 1,
-    "format": " {:%H:%M:%S %d %b}",
+    "format": "{:%H\n%M}",
   },
 
   // --- RIGHT MODULES ---
@@ -82,8 +84,8 @@
     },
   },
   "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-bluetooth": "{icon} {volume}% 󰂯",
+    "format": "{icon}",
+    "format-bluetooth": "󰂯",
     "format-muted": "󰝟",
     "format-icons": {
       "headphone": "󰋋",
@@ -98,20 +100,21 @@
   },
   "cpu": {
     "interval": 10,
-    "format": " {usage}%",
+    "format": "",
     "on-click": "htop",
   },
 
   "memory": {
     "interval": 10,
-    "format": " {}%",
+    "format": "",
     "on-click": "htop",
   },
 
   "temperature": {
     "interval": 30,
     "critical-threshold": 80,
-    "format": " {temperatureC}°C",
+
+    "format": "",
     "on-click": "htop",
   },
 
@@ -148,8 +151,8 @@
       "warning": 30,
       "critical": 15,
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
+    "format": "{icon}",
+    "format-charging": "",
     "format-icons": ["󰂎", "󰁻", "󰁼", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
   },
 

@@ -26,7 +26,7 @@
 #custom-menu,
 #custom-lock,
 #custom-power {
-  padding: 0.3rem 0.75rem;
+  padding: 0.3rem 0.3rem;
   color: @yellow;
   background-color: @bg-h;
 }
@@ -37,22 +37,22 @@
 #workspaces {
   background-color: @bg-h;
 }
+
 #custom-menu {
   color: @yellow;
-  padding-left: 1.2rem;
-  border-radius: 9px 0 0 9px;
+  padding-top: 1.2rem;
+  padding-bottom: 0.3rem;
+  border-radius: 9px 9px 0px 0px;
 }
 
 #workspaces {
-  padding: 0rem 0.3rem;
-  padding-right: 0.8rem;
-
-  border-radius: 0 9px 12px 0;
+  border-radius: 0px 0px 9px 9px;
 }
 
 #workspaces button {
   color: #859289;
-  padding: 1px;
+  padding: 0px;
+  padding-left: 7px;
   transition:
     color 0.2s,
     background-color 0.2s;
@@ -84,8 +84,7 @@
 #network {
   color: @green;
 
-  border-radius: 9px 0 0 12px;
-  padding-left: 1.2rem;
+  border-radius: 9px 9px 0 0px;
 }
 
 #idle_inhibitor.deactivated {
@@ -109,6 +108,7 @@
 }
 
 #temperature {
+  padding-left: 10px;
   color: @red;
 }
 
@@ -133,7 +133,6 @@
 }
 
 #custom-power {
-  padding-right: 1.2rem;
-  border-radius: 0 9px 9px 0;
+  border-radius: 0 0px 9px 9px;
   color: @red;
 }

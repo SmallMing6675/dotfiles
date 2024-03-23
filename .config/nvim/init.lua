@@ -26,10 +26,13 @@ opt.wrap = false
 opt.laststatus = 3
 opt.shell = "/bin/bash"
 
+vim.wo.foldmethod = "expr"
+vim.wo.foldnestmax = 3
+vim.wo.foldlevel = 99
+
 ---------- keymaps ----------
-map({ "n", "v", "i" }, "Q", "<Nop>")
+map({ "n", "v" }, "Q", "<Nop>")
 map("n", ";", ":")
-map("n", "~", "<cmd>:j<cr>", { desc = "Join Lines" })
 map("n", "<leader>/", "gcc", { desc = "Comment line" })
 map("n", "<leader>n", ":ene <BAR> startinsert <CR>", { desc = "New File" })
 map("n", "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -54,12 +57,11 @@ map("n", "<A-l>", "<C-w>l", { desc = "Window Right" })
 map({ "n", "v" }, "<leader>g", ":Gen<CR>", { desc = "Generate Code" })
 map("n", "<C-l>", "<cmd>tabnext<CR>", { desc = "Tab: Next" })
 map("n", "<C-h>", "<cmd>tabprevious<CR>", { desc = "Tab: Previous " })
-map("n", "<tab>n", "<cmd>tabnew<CR>", { desc = "Tab: New" })
-map("n", "<tab>j", "<cmd>tabnext<CR>", { desc = "Tab: Next" })
-map("n", "<tab>k", "<cmd>tabprevious<CR>", { desc = "Tab: Previous " })
-map("n", "<tab>x", "<cmd>tabclose<CR>", { desc = "Tab: Close " })
 map({ "n", "v" }, "J", "<C-d>")
 map({ "n", "v" }, "K", "<C-u>")
+
+map({ "n", "v" }, "`", "zc")
+map({ "n", "v" }, "~", "zo")
 
 ---------- autocmds ---------
 autocmd("VimEnter", {
@@ -94,6 +96,32 @@ autocmd("LspAttach", {
 ---------- plugins ----------
 local plugins = {
 	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = "kevinhwang91/promise-async",
+		event = { "BufReadPost", "BufNewFile" },
+		keys = {
+			{
+				"<leader>fo",
+				function()
+					require("ufo").openAllFolds()
+				end,
+			},
+
+			{
+				"<leader>fc",
+				function()
+					require("ufo").closeAllFolds()
+				end,
+			},
+		},
+		opts = {
+			provider_selector = function(_, _, _)
+				return { "treesitter", "indent" }
+			end,
+		},
+	},
+
+	{
 		"neanias/everforest-nvim",
 		version = false,
 		lazy = false,
@@ -119,9 +147,6 @@ local plugins = {
 		opts = {
 			indent = {
 				indent_size = 4,
-			},
-			window = {
-				position = "right",
 			},
 		},
 		keys = {
@@ -399,6 +424,7 @@ local plugins = {
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
+
 -- stylua: ignore
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
@@ -416,7 +442,7 @@ require("lazy").setup({
 })
 
 if vim.g.neovide then
-	vim.o.guifont = "JetBrainsMono Nerd Font:h14"
+	vim.o.guifont = "JetBrainsMono Nerd Font:h16"
 
 	vim.g.neovide_scale_factor = 1
 	vim.g.neovide_padding_top = 5
