@@ -1,138 +1,241 @@
-@import "nordic.css";
+@import "colors.css";
+@define-color active @yellow;
 
-/* --- GENERAL --- */
 * {
-  font-family: JetBrainsMono Nerd Font;
-  font-weight: bold;
-
-  background-color: transparent;
-  font-size: 18px;
+  font-size: 16px;
+  min-width: 8px;
+  min-height: 0px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
 }
 
-#window,
-#workspaces,
-#clock,
-#network,
-#idle_inhibitor,
-#pulseaudio,
-#cpu,
+window#waybar {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  background: @bg;
+  border-radius: 8px;
+  background: alpha(@bg, 0.7);
+  color: lighter(@active);
+}
+
+menu,
+tooltip {
+  border-radius: 8px;
+  padding: 2px;
+  border: 1px solid lighter(@active);
+  background: alpha(@bg, 0.6);
+
+  color: lighter(@active);
+}
+
+menu label,
+tooltip label {
+  font-size: 14px;
+  color: lighter(@active);
+}
+
+#submap,
+#tray > .needs-attention {
+  animation-name: blink-active;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.modules-right {
+  margin: 0px 6px 6px 6px;
+  border-radius: 4px;
+  background: alpha(@bg, 0.4);
+  color: lighter(@active);
+}
+
+.modules-left {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  margin: 6px 6px 6px 6px;
+  border-radius: 4px;
+  background: alpha(@bg, 0.4);
+  color: lighter(@active);
+}
+
+#gcpu,
+#custom-github,
 #memory,
-#temperature,
-#backlight,
-#battery,
+#disk,
+#together,
+#submap,
+#custom-weather,
+#custom-recorder,
+#connection,
+#cnoti,
+#brightness,
+#power,
 #custom-updates,
-#custom-dunst,
-#bluetooth,
-#custom-menu,
-#custom-lock,
-#custom-power {
-  padding: 0.3rem 0.3rem;
-  color: @yellow;
-  background-color: @bg-h;
+#tray,
+#audio,
+#privacy,
+#sound {
+  border-radius: 4px;
+  margin: 2px 2px 4px 2px;
+  min-width: 22px;
+  background: alpha(darker(@active), 0.3);
+}
+#custom-notifications {
+  padding-left: 4px;
+}
+#pulseaudio.bluetooth {
+  padding-left: 6px;
 }
 
-/* --- LEFT MODULES --- */
+#custom-hotspot,
+#custom-github,
+#custom-notifications {
+  font-size: 14px;
+}
 
-#custom-menu,
+#custom-hotspot {
+  padding-right: 2px;
+}
+
+#custom-vpn,
+#custom-hotspot {
+  background: alpha(darker(@active), 0.3);
+}
+
+#privacy-item {
+  padding: 6px 0px 6px 6px;
+}
+
+#gcpu {
+  padding: 8px 0px 8px 0px;
+}
+
+#custom-cpu-icon {
+  font-size: 25px;
+}
+
+#custom-cputemp,
+#disk,
+#memory,
+#cpu {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#custom-github {
+  padding-top: 2px;
+  padding-right: 4px;
+}
+
+#custom-dmark {
+  color: alpha(@fg, 0.3);
+}
+
+#submap {
+  margin-bottom: 0px;
+}
+
 #workspaces {
-  background-color: @bg-h;
-}
-
-#custom-menu {
-  color: @yellow;
-  padding-top: 1.2rem;
-  padding-bottom: 0.3rem;
-  border-radius: 9px 9px 0px 0px;
-}
-
-#workspaces {
-  border-radius: 0px 0px 9px 9px;
+  margin: 6px 2px;
+  padding: 4px 0px 0px 0px;
+  border-radius: 8px;
 }
 
 #workspaces button {
-  color: #859289;
-  padding: 0px;
-  padding-left: 7px;
-  transition:
-    color 0.2s,
-    background-color 0.2s;
+  padding-left: 0px;
+  padding-right: 4px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  color: @fg;
+  background: transparent;
+  color: alpha(@fg, 0.3);
+  border-radius: 4px;
 }
 
-#workspaces button.empty {
-  color: @bg4;
+#workspaces button.urgent {
+  font-weight: bold;
+  color: @fg;
 }
 
 #workspaces button.active {
-  color: @yellow;
+  background: alpha(@active, 0.4);
+  color: lighter(@active);
+  border-radius: 4px;
 }
 
-#workspaces button:hover {
-  color: @orange;
+#network.wifi {
+  padding-right: 4px;
 }
 
-/* --- CENTER MODULES --- */
-
-#clock {
-  border-radius: 9px;
-  padding-left: 9px;
-  padding-right: 9px;
-  color: @yellow;
+#submap {
+  min-width: 0px;
+  margin: 4px 6px 4px 6px;
 }
 
-/* --- RIGHT MODULES --- */
-
-#network {
-  color: @green;
-
-  border-radius: 9px 9px 0 0px;
-}
-
-#idle_inhibitor.deactivated {
-  color: @red;
-}
-
-#idle_inhibitor.activated {
-  color: @green;
-}
-
-#pulseaudio {
-  color: @purple;
-}
-
-#cpu {
-  color: @yellow;
-}
-
-#memory {
-  color: @orange;
-}
-
-#temperature {
-  padding-left: 10px;
-  color: @red;
-}
-
-#backlight {
-  color: @yellow;
-}
-
-#battery {
-  color: @green;
-}
-
-#battery.charging {
-  color: @green;
-}
-
-#battery.warning:not(.charging) {
-  color: @red;
+#custom-weather,
+#tray {
+  padding: 4px 0px 4px 0px;
 }
 
 #bluetooth {
-  color: @aqua;
+  padding-top: 2px;
 }
 
-#custom-power {
-  border-radius: 0 0px 9px 9px;
-  color: @red;
+#battery {
+  margin: 4px 2px 4px 2px;
+}
+
+#clock {
+  font-weight: bold;
+  padding: 4px 2px 2px 2px;
+}
+
+#pulseaudio.mic {
+  border-radius: 4px;
+  color: @bg;
+  background: alpha(darker(@fg), 0.6);
+  padding-left: 4px;
+}
+
+#backlight-slider slider,
+#pulseaudio-slider slider {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+#backlight-slider trough,
+#pulseaudio-slider trough {
+  margin-top: 4px;
+  min-width: 6px;
+  min-height: 60px;
+  border-radius: 8px;
+  background-color: alpha(@bg, 0.6);
+}
+
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+  border-radius: 8px;
+  background-color: lighter(@active);
+}
+
+#bluetooth.discoverable,
+#bluetooth.discovering,
+#bluetooth.pairable {
+  border-radius: 8px;
+  animation-name: blink-active;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink-active {
+  to {
+    background-color: @active;
+    color: @fg;
+  }
 }

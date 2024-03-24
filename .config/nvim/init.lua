@@ -420,6 +420,25 @@ local plugins = {
 			{ "<c-s>", mode = { "n" }, function() require("flash").jump({ pattern = vim.fn.expand("<cword>") }) end, desc = "Flash Current Word", },
 		},
 	},
+	{
+		"NStefan002/15puzzle.nvim",
+		cmd = "Play15puzzle",
+		config = function()
+			require("15puzzle").setup({
+				keys = {
+					up = "w",
+					down = "s",
+					left = "a",
+					right = "d",
+					new_game = "N",
+					confirm = "y",
+					cancel = "n",
+					next_theme = "<c-a>",
+					prev_theme = "<c-x>",
+				},
+			})
+		end,
+	},
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
