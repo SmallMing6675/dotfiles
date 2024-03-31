@@ -17,7 +17,7 @@ window#waybar {
   transition-duration: 0.5s;
   background: @bg;
   border-radius: 8px;
-  background: alpha(@bg, 0.7);
+  background: alpha(@bg, 0.9);
   color: lighter(@active);
 }
 

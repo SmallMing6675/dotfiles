@@ -64,7 +64,7 @@ hyprland \
 hyprpicker \
 swaybg \
 waybar-git \
-rofi \
+rofi-lbonn-wayland \
 brightnessctl \
 librewolf-bin \
 pavucontrol \
