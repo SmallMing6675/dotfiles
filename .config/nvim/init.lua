@@ -25,6 +25,7 @@ opt.scrolloff = 8
 opt.wrap = false
 opt.laststatus = 3
 opt.shell = "/bin/bash"
+opt.cursorline = true
 
 vim.wo.foldmethod = "expr"
 vim.wo.foldnestmax = 3
@@ -36,11 +37,11 @@ map("n", ";", ":")
 map("n", "<leader>/", "gcc", { desc = "Comment line" })
 map("n", "<leader>n", ":ene <BAR> startinsert <CR>", { desc = "New File" })
 map("n", "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
-map("n", "<Leader>q", ":wq<CR>", { desc = "Save Then Exit" })
-map("n", "<Leader>x", ":bdelete<CR>", { desc = "Delete Buffer" })
-map("n", "<leader>v", ":vsplit<CR>", { desc = "Open Vertical Split" })
-map("n", "<leader>h", ":split<CR>", { desc = "Open Horizontal Split" })
-map("n", "<leader>q", "<Cmd>wq<CR>", { desc = "Close Buffer" })
+map("n", "<leader>q", ":wq<cr>", { desc = "save then exit" })
+map("n", "<leader>x", ":bdelete<cr>", { desc = "delete buffer" })
+map("n", "<leader>v", ":vsplit<cr>", { desc = "open vertical split" })
+map("n", "<leader>h", ":split<cr>", { desc = "open horizontal split" })
+map("n", "<leader>q", "<cmd>wq<cr>", { desc = "close buffer" })
 map("v", "<", "<gv", { desc = "Indent Line" })
 map("v", ">", ">gv", { desc = "Indent Line" })
 map("n", "<", "V<", { desc = "Indent Line Normal" })
@@ -54,14 +55,11 @@ map("n", "<A-h>", "<C-w>h", { desc = "Window Left" })
 map("n", "<A-j>", "<C-w>j", { desc = "Window Down" })
 map("n", "<A-k>", "<C-w>k", { desc = "Window Up" })
 map("n", "<A-l>", "<C-w>l", { desc = "Window Right" })
-map({ "n", "v" }, "<leader>g", ":Gen<CR>", { desc = "Generate Code" })
-map("n", "<C-l>", "<cmd>tabnext<CR>", { desc = "Tab: Next" })
-map("n", "<C-h>", "<cmd>tabprevious<CR>", { desc = "Tab: Previous " })
 map({ "n", "v" }, "J", "<C-d>")
 map({ "n", "v" }, "K", "<C-u>")
-
-map({ "n", "v" }, "`", "zc")
-map({ "n", "v" }, "~", "zo")
+map("n", "<A-S-l>", "<cmd>tabnext<CR>", { desc = "Tab: Next" })
+map("n", "<A-S-h>", "<cmd>tabprevious<CR>", { desc = "Tab: Previous" })
+map("n", "<leader><Tab>", "<cmd>tabnew<CR>", { desc = "Tab: Next" })
 
 ---------- autocmds ---------
 autocmd("VimEnter", {
@@ -96,32 +94,6 @@ autocmd("LspAttach", {
 ---------- plugins ----------
 local plugins = {
 	{
-		"kevinhwang91/nvim-ufo",
-		dependencies = "kevinhwang91/promise-async",
-		event = { "BufReadPost", "BufNewFile" },
-		keys = {
-			{
-				"<leader>fo",
-				function()
-					require("ufo").openAllFolds()
-				end,
-			},
-
-			{
-				"<leader>fc",
-				function()
-					require("ufo").closeAllFolds()
-				end,
-			},
-		},
-		opts = {
-			provider_selector = function(_, _, _)
-				return { "treesitter", "indent" }
-			end,
-		},
-	},
-
-	{
 		"neanias/everforest-nvim",
 		version = false,
 		lazy = false,
@@ -129,10 +101,11 @@ local plugins = {
 		config = function()
 			require("everforest").setup({
 				show_eob = false,
-
-				float_style = "dim",
+				background = "hard",
+				on_highlights = function(hl, palette)
+					hl.WinSeparator = { fg = palette.bg0, bg = palette.bg0 }
+				end,
 			})
-
 			require("everforest").load()
 		end,
 	},
@@ -141,7 +114,7 @@ local plugins = {
 		branch = "v3.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
 		opts = {
@@ -393,7 +366,6 @@ local plugins = {
 			require("nvim-surround").setup({ indent_lines = false })
 		end,
 	},
-
 	{
 		"folke/which-key.nvim",
 		keys = { "<leader>", "c", "v", "g", "<tab>" },

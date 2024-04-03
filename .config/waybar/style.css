@@ -16,7 +16,7 @@ window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
   background: @bg;
-  border-radius: 8px;
+  border-radius: 9px;
   background: alpha(@bg, 0.9);
   color: lighter(@active);
 }
@@ -47,7 +47,7 @@ tooltip label {
 }
 
 .modules-right {
-  margin: 0px 6px 6px 6px;
+  margin: 0px 3px 3px 3px;
   border-radius: 4px;
   background: alpha(@bg, 0.4);
   color: lighter(@active);
@@ -56,7 +56,7 @@ tooltip label {
 .modules-left {
   transition-property: background-color;
   transition-duration: 0.5s;
-  margin: 6px 6px 6px 6px;
+  margin: 3px 3px 3px 3px;
   border-radius: 4px;
   background: alpha(@bg, 0.4);
   color: lighter(@active);
@@ -140,20 +140,20 @@ tooltip label {
 }
 
 #workspaces {
-  margin: 6px 2px;
-  padding: 4px 0px 0px 0px;
+  margin-top: 6px;
   border-radius: 8px;
 }
 
 #workspaces button {
-  padding-left: 0px;
   padding-right: 4px;
   transition-property: background-color;
   transition-duration: 0.5s;
-  color: @fg;
-  background: transparent;
-  color: alpha(@fg, 0.3);
-  border-radius: 4px;
+  color: alpha(@fg, 0.6);
+  border-radius: 16px;
+}
+
+#workspaces button.empty {
+  color: alpha(@fg, 0.2);
 }
 
 #workspaces button.urgent {
@@ -162,9 +162,8 @@ tooltip label {
 }
 
 #workspaces button.active {
-  background: alpha(@active, 0.4);
   color: lighter(@active);
-  border-radius: 4px;
+  background-color: alpha(@fg, 0.3);
 }
 
 #network.wifi {

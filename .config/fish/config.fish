@@ -10,9 +10,7 @@ alias ls="eza --icons=auto"
 alias lt="eza --tree --level=3 --icons=auto"
 alias l="eza -l --icons=auto"
 alias logout="loginctl terminate-session self"
-alias v='neovide'
-alias vim="nvim"
-alias nv='nvim'
+alias vim="neovide"
 alias rm="rip"
 alias cat="bat"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
